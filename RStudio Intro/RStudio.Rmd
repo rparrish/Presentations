@@ -1,0 +1,123 @@
+---
+title: "Untitled"
+author: "Rollie Parrish"
+date: "Saturday, September 06, 2014"
+output: slidy_presentation
+---
+
+
+## Intro
+
+I think the two goals are to be comfortable with how RStudio works and also the basics of how R thinks.
+
+Now that we have (or are close to having) a system-wide distribution of R and RStudio, would you be willing to take the September PAIG and give an introduction to R?  I’m thinking the basics of using files vs the console, maybe knitr (though a full meeting devoted to the principles and practice of reproducible research is also warranted), how to install new packages, some of the essential packages from your perspective, and how to learn R (maybe pointing to something like swirl but also where you go when you need help, possibly online courses, whatever).
+
+
+## Intended Audience
+
+- understand pros/cons of programming vs. point-and-click
+- already familiar or used R in past
+- currently using R console
+- or just getting started with R
+
+
+
+## What is R?
+
+- Software for data manipulation, analysis and graphics display
+- Interactive and functional programming language
+- "Domain specific"
+- Extended funtionality via functions and packages
+
+
+
+## How is R used here?
+
+- Data Cleanup (HBIPS)
+- Extract, Transform, Load (REDCap & Stix Employee Health)
+- Ad-Hoc Analysis (WarmShots and Ventricular Fibrillation)
+- Reporting (MDRC Prov. Cardiac Surgery reports)
+- Statistical Modeling (more to come)
+- Presentations
+
+
+
+## RStudio
+
+Integegrated Development Environment for working with R scripts, packages, and final output.
+
+Intended for programming, NOT a Graphical User Interface for R. Other packages available such as:
+
+- R Commander
+- Deducer
+- JGR
+- Rattle
+
+
+
+## RStudio demo
+
+- Menu bar
+- Panels
+- Options
+
+
+## RStudio demo (cont.)
+
+- load data csv
+- load from SQL
+- load via API
+- dim
+- summary
+- plots
+
+
+
+
+## Key Themes
+- Reproducible Analysis/Research
+- Project Management
+- version Control
+
+
+
+## R Markdown / Knitr
+
+
+
+
+## Other Resources
+
+https://www.datacamp.com/
+https://www.codeschool.com/courses/try-r
+http://www.statmethods.net/
+http://www.twotorials.com/
+http://www.youtube.com (search "R tutorial")
+http://www.coursera.org
+
+
+
+## Help: "How do I..."
+
+http://stackoverflow.com  
+(search with [r] tag)
+
+
+
+
+## Recommended R Packages
+
+ - RODBC
+ - dplyr
+ - compareGroups
+ - ggplot2
+ 
+ 
+
+## Advanced Topics
+
+- Version Control (Git)
+- Writing Packages
+
+
+
