@@ -25,7 +25,6 @@ Intended Audience
 - understand pros/cons of programming vs. point-and-click
 - already familiar or used R in past
 - currently using R console
-- or just getting started with R
 
 
 
@@ -44,7 +43,7 @@ How is R used here?
 - Data Cleanup (HBIPS)
 - Extract, Transform, Load (REDCap & Stix Employee Health)
 - Ad-Hoc Analysis (WarmShots and Ventricular Fibrillation)
-- Reporting (MDRC Prov. Cardiac Surgery reports)
+- Reporting (MDRC Prov. Cardiac Surgery reports, GAMUT)
 - Statistical Modeling (more to come)
 - This presentation (!)
 
@@ -87,6 +86,7 @@ RStudio demo (cont.)
 
 Key Themes
 ===
+- Automation
 - Reproducible Analysis/Research
 - Project Management
 - version Control
