@@ -4,10 +4,6 @@ author: Rollie Parrish
 date: Sept 22, 2014
 
 
-
-I think the two goals are to be comfortable with how RStudio works and also the basics of how R thinks.
-
-Intro
 ===
 
 ![](RStudio-figure/geeks-vs-nongeeks-repetitive-tasks.png)
@@ -16,7 +12,7 @@ Intro
 text
 =====
 
-Now that we have (or are close to having) a system-wide distribution of R and RStudio, would you be willing to take the September PAIG and give an introduction to R?  I’m thinking the basics of using files vs the console, maybe knitr (though a full meeting devoted to the principles and practice of reproducible research is also warranted), how to install new packages, some of the essential packages from your perspective, and how to learn R (maybe pointing to something like swirl but also where you go when you need help, possibly online courses, whatever).
+Now that we have (or are close to having) a system-wide distribution of R and RStudio, would you be willing to take the September PAIG and give an introduction to R?  IÂ’m thinking the basics of using files vs the console, maybe knitr (though a full meeting devoted to the principles and practice of reproducible research is also warranted), how to install new packages, some of the essential packages from your perspective, and how to learn R (maybe pointing to something like swirl but also where you go when you need help, possibly online courses, whatever).
 
 
 Intended Audience
@@ -32,7 +28,7 @@ What is R?
 ===
 - Software for data manipulation, analysis and graphics display
 - Interactive and functional programming language
-- "Domain specific"
+- "Domain specific" - statistics, data science & analysis
 - Extended funtionality via functions and packages
 
 
@@ -54,7 +50,7 @@ RStudio
 
 Integegrated Development Environment for working with R scripts, packages, and final output.
 
-Intended for programming, NOT a Graphical User Interface for R. Other packages available such as:
+Intended for programming, NOT a Graphical User Interface for R. Other GUI packages available such as:
 
 - R Commander
 - Deducer
@@ -69,6 +65,65 @@ RStudio demo
 - Menu bar
 - Panels
 - Options
+
+
+R basics
+=======
+
+### assignment
+assigns variable name on left the value(s) to the right
+
+`variable_name <- value`
+
+
+```r
+tax <- .08
+item <- c("soda", "sandwich", "book", "bike")
+prices <- c(1.00, 6.00, 30.00, 1500)
+```
+
+
+
+R basics
+=======
+### vectorization
+
+
+```r
+tax <- prices * tax
+```
+
+
+### variables can be
+
+- single values
+- vectors (same class of data - strings, numeric, etc.)
+- lists (mixed classes of data)
+- data frames - tables of data, columns are the same class
+
+
+R basics
+=======
+### data frames
+
+
+
+```r
+invoice <- data.frame(item, prices, tax)
+invoice
+```
+
+```
+      item prices    tax
+1     soda      1   0.08
+2 sandwich      6   0.48
+3     book     30   2.40
+4     bike   1500 120.00
+```
+
+
+
+
 
 
 RStudio demo (cont.)
@@ -86,16 +141,24 @@ RStudio demo (cont.)
 
 Key Themes
 ===
-- Automation
 - Reproducible Analysis/Research
 - Project Management
-- version Control
+- Automation
 
 
 
-R Markdown / Knitr
+Reproducible Analysis
 ==================
 
+
+
+Projects
+==================
+
+
+
+Automation
+==================
 
 
 Recommended R Packages
@@ -108,25 +171,34 @@ Recommended R Packages
 
 
 
-Other Resources
+Other R Resources
 ===
 
-https://www.datacamp.com/
-https://www.codeschool.com/courses/try-r
-http://www.statmethods.net/
-http://www.twotorials.com/
-http://www.youtube.com (search "R tutorial")
-http://www.coursera.org
+- https://www.datacamp.com/
+- https://www.codeschool.com/courses/try-r
+- http://www.statmethods.net/
+- http://www.twotorials.com/
+- http://www.youtube.com (search "R tutorial")
+- http://www.coursera.org
 
+Book Recommendations
+===
 
+- R in Action (Kabacoff, 2014)
+- R for Everyone (Lander, 2013)
+- R Graphics Cookbook (Chang, 2013)
 
 Help: "How do I..."
 ====
 
-http://stackoverflow.com
+## `?command`
+  internal help
+
+## http://stackoverflow.com
+
 (search with [r] tag)
 
- - Always include a 'minimally reproducible example' of the issue
+Always include a 'minimally reproducible example' of the issue
 
 
 
