@@ -203,4 +203,3 @@ Advanced Topics
 - Version Control (Git)
 - Writing Packages
 - Reports (RMarkdown, knitr & LaTex)
-
