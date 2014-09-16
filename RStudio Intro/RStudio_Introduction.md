@@ -34,7 +34,7 @@ How is R used here?
 
 - Data Cleanup (HBIPS)
 - Extract, Transform, Load (Stix/Employee Health, REDCap)
-- Ad-Hoc Analysis (WarmShots vs HotShots)
+- Ad-Hoc Analysis (WarmShots vs HotShots vs NoShots)
 - Reporting (MDRC Cardiac Surgery reports, GAMUT)
 - Statistical Modeling / Predictive Analytics (more to come)
 - This presentation (!)
@@ -203,6 +203,4 @@ Advanced Topics
 - Version Control (Git)
 - Writing Packages
 - Reports (RMarkdown, knitr & LaTex)
-
-
 

@@ -34,7 +34,7 @@ How is R used here?
 
 - Data Cleanup (HBIPS)
 - Extract, Transform, Load (Stix/Employee Health, REDCap)
-- Ad-Hoc Analysis (WarmShots vs HotShots)
+- Ad-Hoc Analysis (WarmShots vs HotShots vs NoShots)
 - Reporting (MDRC Cardiac Surgery reports, GAMUT)
 - Statistical Modeling / Predictive Analytics (more to come)
 - This presentation (!)
@@ -138,8 +138,6 @@ mydata <- tbl_df(hflights)  # dplyr version of a data frame
 
 mydata
 
-glimpse(mydata)
-
 summary(mydata)
 
 boxplot(ArrTime ~ UniqueCarrier, data = mydata, main = "Arrival Times by Carrier")
@@ -209,6 +207,4 @@ Advanced Topics
 - Version Control (Git)
 - Writing Packages
 - Reports (RMarkdown, knitr & LaTex)
-
-
 
