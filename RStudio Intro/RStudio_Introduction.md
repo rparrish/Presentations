@@ -5,29 +5,25 @@ date: Sept 22, 2014
 
 
 ===
+<img src="RStudio-figure/geeks-vs-nongeeks-repetitive-tasks.png" width="800px" height="700px" />
 
-![](RStudio-figure/geeks-vs-nongeeks-repetitive-tasks.png)
-
-
-text
-=====
-
-Now that we have (or are close to having) a system-wide distribution of R and RStudio, would you be willing to take the September PAIG and give an introduction to R?  Im thinking the basics of using files vs the console, maybe knitr (though a full meeting devoted to the principles and practice of reproducible research is also warranted), how to install new packages, some of the essential packages from your perspective, and how to learn R (maybe pointing to something like swirl but also where you go when you need help, possibly online courses, whatever).
+_source: Bruno Oliveira (Google)_
 
 
 Intended Audience
 =====
 
-- understand pros/cons of programming vs. point-and-click
-- already familiar or used R in past
-- currently using R console
+- understand pros/cons of programming vs. point-and-click software
+- never heard of R
+- familiar with R
+- currently using R console but not RStudio
 
 
 
 What is R?
 ===
-- Software for data manipulation, analysis and graphics display
-- Interactive and functional programming language
+- Software environment for data manipulation, analysis and graphics display
+- Interactive and functional programming language (not compiled)
 - "Domain specific" - statistics, data science & analysis
 - Extended funtionality via functions and packages
 
@@ -37,10 +33,10 @@ How is R used here?
 ===
 
 - Data Cleanup (HBIPS)
-- Extract, Transform, Load (REDCap & Stix Employee Health)
-- Ad-Hoc Analysis (WarmShots and Ventricular Fibrillation)
-- Reporting (MDRC Prov. Cardiac Surgery reports, GAMUT)
-- Statistical Modeling (more to come)
+- Extract, Transform, Load (Stix/Employee Health, REDCap)
+- Ad-Hoc Analysis (WarmShots vs HotShots)
+- Reporting (MDRC Cardiac Surgery reports, GAMUT)
+- Statistical Modeling / Predictive Analytics (more to come)
 - This presentation (!)
 
 
@@ -48,93 +44,104 @@ How is R used here?
 RStudio
 ===
 
-Integegrated Development Environment for working with R scripts, packages, and final output.
+Integrated Development Environment (IDE) for R
 
-Intended for programming, NOT a Graphical User Interface for R. Other GUI packages available such as:
-
-- R Commander
-- Deducer
-- JGR
-- Rattle
+- Working with R scripts, packages, and final output.
+- Intended for programming, NOT a Graphical User Interface for R.
 
 
 
 RStudio demo
 ====
 
-- Menu bar
+- Editor (source files)
+- R Console
 - Panels
-- Options
+
+
+
+R basics
+=======
+### variables can be
+
+- single values
+- vectors (same class of data - strings, numeric, dates, etc.)
+- lists (mixed classes)
+- data frames - tables of data
+- functions
+
 
 
 R basics
 =======
 
 ### assignment
-assigns variable name on left the value(s) to the right
 
 `variable_name <- value`
 
 
 ```r
-tax <- .08
-item <- c("soda", "sandwich", "book", "bike")
-prices <- c(1.00, 6.00, 30.00, 1500)
+tax_rate <- .08
+item <- c("soda", "sandwich", "book")
+prices <- c(1.50, 6.35, 34.95)
+
+tax <- prices * tax_rate
+tax
 ```
 
-
+```
+[1] 0.120 0.508 2.796
+```
 
 R basics
 =======
-### vectorization
-
+### function
 
 ```r
-tax <- prices * tax
+add_tax <- function(price, tax_rate) {
+    round(price + (price * tax_rate), 2)
+}
+
+subtotal <- add_tax(prices, tax_rate)
+subtotal
 ```
 
+```
+[1]  1.62  6.86 37.75
+```
 
-### variables can be
-
-- single values
-- vectors (same class of data - strings, numeric, etc.)
-- lists (mixed classes of data)
-- data frames - tables of data, columns are the same class
 
 
 R basics
 =======
+
 ### data frames
 
 
-
 ```r
-invoice <- data.frame(item, prices, tax)
+invoice <- data.frame(item, prices, subtotal)
 invoice
 ```
 
 ```
-      item prices    tax
-1     soda      1   0.08
-2 sandwich      6   0.48
-3     book     30   2.40
-4     bike   1500 120.00
+      item prices subtotal
+1     soda   1.50     1.62
+2 sandwich   6.35     6.86
+3     book  34.95    37.75
 ```
 
 
 
 
 
-
-RStudio demo (cont.)
+RStudio demo
 =======
 
-- load data csv
-- load from SQL
-- load via API
-- dim
-- summary
-- plots
+ - loading data (cars.csv)
+ - installing packages (hflights)
+ - plots (boxplots)
+ - projects (switch to GAMUT)
+
 
 
 
@@ -145,20 +152,6 @@ Key Themes
 - Project Management
 - Automation
 
-
-
-Reproducible Analysis
-==================
-
-
-
-Projects
-==================
-
-
-
-Automation
-==================
 
 
 Recommended R Packages
@@ -181,6 +174,8 @@ Other R Resources
 - http://www.youtube.com (search "R tutorial")
 - http://www.coursera.org
 
+
+
 Book Recommendations
 ===
 
@@ -188,17 +183,18 @@ Book Recommendations
 - R for Everyone (Lander, 2013)
 - R Graphics Cookbook (Chang, 2013)
 
+
+
+
 Help: "How do I..."
 ====
 
 ## `?command`
-  internal help
+  R's internal documentation
 
 ## http://stackoverflow.com
 
-(search with [r] tag)
-
-Always include a 'minimally reproducible example' of the issue
+search using the [r] tag
 
 
 
@@ -206,6 +202,7 @@ Advanced Topics
 ===
 - Version Control (Git)
 - Writing Packages
+- Reports (RMarkdown, knitr & LaTex)
 
 
 

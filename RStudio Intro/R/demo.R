@@ -1,9 +1,15 @@
 #'
 #' Demo of RStudio
 
-#' @param x a number
+#' @param price the price for an item
+#' @param tax_rate the tax rate as a decimal
+#'
 #' export
-test <- function (x) {
-    return(x+1)
+
+
+
+add_tax <- function(price, tax_rate) {
+    round(price + (price * tax_rate), 2)
 }
+
 
