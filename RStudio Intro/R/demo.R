@@ -1,11 +1,15 @@
 #'
 #' Demo of RStudio
 
-#' @param price the price for an item
-#' @param tax_rate the tax rate as a decimal
-#'
-#' export
 
+tax_rate <- .08
+
+item <- c("soda", "sandwich", "book")
+
+prices <- c(1.50, 6.35, 34.95)
+
+tax <- prices * tax_rate
+tax
 
 
 add_tax <- function(price, tax_rate) {
@@ -13,3 +17,8 @@ add_tax <- function(price, tax_rate) {
 }
 
 
+subtotal <- add_tax(prices, tax_rate)
+subtotal
+
+invoice <- data.frame(item, prices, subtotal)
+invoice
