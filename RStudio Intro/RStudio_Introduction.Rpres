@@ -34,7 +34,11 @@ How is R used here?
 
 - Data Cleanup (HBIPS)
 - Extract, Transform, Load (Stix/Employee Health, REDCap)
+<<<<<<< HEAD
 - Ad-Hoc Analysis (WarmShots vs HotShots)
+=======
+- Ad-Hoc Analysis (WarmShots vs HotShots vs NoShots)
+>>>>>>> 1c769a380a99d4e2566a9ba703976d134d52e8dc
 - Reporting (MDRC Cardiac Surgery reports, GAMUT)
 - Statistical Modeling / Predictive Analytics (more to come)
 - This presentation (!)
@@ -131,6 +135,7 @@ RStudio demo
 
 
 ```{r rstudio_demo, eval=FALSE, include = FALSE}
+<<<<<<< HEAD
 library(dplyr)
 library(hflights)
 
@@ -139,6 +144,15 @@ mydata <- tbl_df(hflights)  # dplyr version of a data frame
 mydata
 
 glimpse(mydata)
+=======
+
+library(dplyr)
+data(hflights)
+
+mydata <- tbl_df(hflights)  # dplyr version of a data frame
+
+mydata
+>>>>>>> 1c769a380a99d4e2566a9ba703976d134d52e8dc
 
 summary(mydata)
 
@@ -209,6 +223,9 @@ Advanced Topics
 - Version Control (Git)
 - Writing Packages
 - Reports (RMarkdown, knitr & LaTex)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1c769a380a99d4e2566a9ba703976d134d52e8dc
 
 
