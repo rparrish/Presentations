@@ -1,11 +1,15 @@
 #'
 #' Demo of RStudio
 
-#' @param price the price for an item
-#' @param tax_rate the tax rate as a decimal
-#'
-#' export
 
+tax_rate <- .08
+
+item <- c("soda", "sandwich", "book")
+
+prices <- c(1.50, 6.35, 34.95)
+
+tax <- prices * tax_rate
+tax
 
 
 add_tax <- function(price, tax_rate) {
@@ -13,3 +17,52 @@ add_tax <- function(price, tax_rate) {
 }
 
 
+subtotal <- add_tax(prices, tax_rate)
+subtotal
+
+invoice <- data.frame(item, prices, subtotal)
+invoice
+
+
+
+library(dplyr)
+library(hflights)
+library(compareGroups)
+
+mydata <- tbl_df(hflights)  # dplyr version of a data frame
+
+mydata
+
+summary(mydata)
+
+boxplot(ArrTime ~ UniqueCarrier,
+        data = mydata,
+        main = "Arrival Times by Carrier")
+
+boxplot(ActualElapsedTime ~ UniqueCarrier,
+        data = mydata,
+        main = "Turn-around time by Carrier")
+
+boxplot(ActualElapsedTime ~ Origin,
+        data = mydata,
+        main = "Turn-around time by Airport")
+
+
+## dplyr package: AS airlines and destinations
+
+AS <- mydata %>%
+    select(UniqueCarrier:ActualElapsedTime, Origin:Distance) %>%
+    filter(UniqueCarrier == "AS")
+AS
+
+str(AS)
+
+
+## compareGroups package: comparing cancellations
+library(compareGroups)
+
+cancellations <- compareGroups(
+    Cancelled ~ Origin + as.factor(Month),
+    data = mydata)
+
+createTable(cancellations)
