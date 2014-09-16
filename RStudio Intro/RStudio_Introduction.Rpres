@@ -132,7 +132,6 @@ RStudio demo
 
 ```{r rstudio_demo, eval=FALSE, include = FALSE}
 
-
 library(dplyr)
 data(hflights)
 
@@ -209,6 +208,5 @@ Advanced Topics
 - Version Control (Git)
 - Writing Packages
 - Reports (RMarkdown, knitr & LaTex)
-
 
 

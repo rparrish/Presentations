@@ -205,4 +205,3 @@ Advanced Topics
 - Reports (RMarkdown, knitr & LaTex)
 
 
-
