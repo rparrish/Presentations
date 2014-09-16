@@ -34,7 +34,7 @@ How is R used here?
 
 - Data Cleanup (HBIPS)
 - Extract, Transform, Load (Stix/Employee Health, REDCap)
-- Ad-Hoc Analysis (WarmShots vs HotShots)
+- Ad-Hoc Analysis (WarmShots vs HotShots vs NoShots)
 - Reporting (MDRC Cardiac Surgery reports, GAMUT)
 - Statistical Modeling / Predictive Analytics (more to come)
 - This presentation (!)
@@ -131,14 +131,14 @@ RStudio demo
 
 
 ```{r rstudio_demo, eval=FALSE, include = FALSE}
+
+
 library(dplyr)
-library(hflights)
+data(hflights)
 
 mydata <- tbl_df(hflights)  # dplyr version of a data frame
 
 mydata
-
-glimpse(mydata)
 
 summary(mydata)
 
