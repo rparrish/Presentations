@@ -131,9 +131,8 @@ RStudio demo
 
 
 ```{r rstudio_demo, eval=FALSE, include = FALSE}
-
 library(dplyr)
-data(hflights)
+library(hflights)
 
 mydata <- tbl_df(hflights)  # dplyr version of a data frame
 
@@ -208,5 +207,3 @@ Advanced Topics
 - Version Control (Git)
 - Writing Packages
 - Reports (RMarkdown, knitr & LaTex)
-
-

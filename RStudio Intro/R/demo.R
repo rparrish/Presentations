@@ -74,4 +74,3 @@ cancellations <- compareGroups(
     data = mydata)
 
 createTable(cancellations)
-
