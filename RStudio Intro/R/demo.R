@@ -58,11 +58,19 @@ AS
 str(AS)
 
 
-## compareGroups package: comparing cancellations
+## dplyr package: total flights by Unique Carrier
+
+flight_counts <- group_by(mydata, UniqueCarrier) %>%
+    summarise(count = n())
+
+mydata$Cancelled <- as.factor(mydata$Cancelled)
+mydata$Diverted <- as.factor(mydata$Diverted)
+
+## compareGroups package: comparing high vs low volume carriers
 library(compareGroups)
 
 cancellations <- compareGroups(
-    Cancelled ~ Origin + as.factor(Month),
+    Origin ~ Cancelled + Diverted + DepDelay,
     data = mydata)
 
 createTable(cancellations)
