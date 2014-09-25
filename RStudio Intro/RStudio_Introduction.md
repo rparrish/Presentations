@@ -5,9 +5,9 @@ date: Sept 22, 2014
 
 
 ===
+_source Bruno Oliveira (Google)_
 <img src="RStudio-figure/geeks-vs-nongeeks-repetitive-tasks.png" width="800px" height="700px" />
 
-_source: Bruno Oliveira (Google)_
 
 
 Intended Audience
@@ -32,7 +32,6 @@ What is R?
 How is R used here?
 ===
 
-- Data Cleanup (HBIPS)
 - Extract, Transform, Load (Stix/Employee Health, REDCap)
 - Ad-Hoc Analysis (WarmShots vs HotShots vs NoShots)
 - Reporting (MDRC Cardiac Surgery reports, GAMUT)
@@ -82,15 +81,14 @@ R basics
 
 ```r
 tax_rate <- .08
-item <- c("soda", "sandwich", "book")
+items <- c("soda", "sandwich", "book")
 prices <- c(1.50, 6.35, 34.95)
 
-tax <- prices * tax_rate
-tax
+prices
 ```
 
 ```
-[1] 0.120 0.508 2.796
+[1]  1.50  6.35 34.95
 ```
 
 R basics
@@ -101,9 +99,16 @@ R basics
 add_tax <- function(price, tax_rate) {
     round(price + (price * tax_rate), 2)
 }
+add_tax(10,.088)
+```
 
-subtotal <- add_tax(prices, tax_rate)
-subtotal
+```
+[1] 10.88
+```
+
+```r
+totals <- add_tax(prices, tax_rate)
+totals
 ```
 
 ```
@@ -119,15 +124,15 @@ R basics
 
 
 ```r
-invoice <- data.frame(item, prices, subtotal)
+invoice <- data.frame(items, prices, totals)
 invoice
 ```
 
 ```
-      item prices subtotal
-1     soda   1.50     1.62
-2 sandwich   6.35     6.86
-3     book  34.95    37.75
+     items prices totals
+1     soda   1.50   1.62
+2 sandwich   6.35   6.86
+3     book  34.95  37.75
 ```
 
 
@@ -137,30 +142,16 @@ invoice
 RStudio demo
 =======
 
- - loading data (cars.csv)
+ - loading data (hflights_sample.csv)
  - installing packages (hflights)
  - plots (boxplots)
- - projects (switch to GAMUT)
-
-
-
-
-
-Key Themes
-===
-- Reproducible Analysis/Research
-- Project Management
-- Automation
-
-
-
-Recommended R Packages
-======================
-
- - RODBC
  - dplyr
  - compareGroups
- - ggplot2
+ - projects
+ - options (Tools --> Global Options)
+
+
+
 
 
 
@@ -189,17 +180,32 @@ Book Recommendations
 Help: "How do I..."
 ====
 
-## `?command`
-  R's internal documentation
+## Use R's internal documentation
+
+  `?command`
 
 ## http://stackoverflow.com
 
-search using the [r] tag
+   search using the [r] tag
 
 
 
-Advanced Topics
+Future Topics
 ===
-- Version Control (Git)
-- Writing Packages
-- Reports (RMarkdown, knitr & LaTex)
+
+- Reports
+    - RMarkdown
+    - knitr
+    - LaTeX
+- Reproducible Research/Analysis
+- Version Control
+    - Git
+    - GitHub/BitBucket vs local
+- Writing R Packages
+
+
+
+
+Questions
+====
+
