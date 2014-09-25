@@ -4,6 +4,9 @@ author: Rollie Parrish
 date: Sept 22, 2014
 
 
+
+
+
 ===
 _source Bruno Oliveira (Google)_
 <img src="RStudio-figure/geeks-vs-nongeeks-repetitive-tasks.png" width="800px" height="700px" />
