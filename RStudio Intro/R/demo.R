@@ -4,12 +4,9 @@
 
 tax_rate <- .08
 
-item <- c("soda", "sandwich", "book")
+items <- c("soda", "sandwich", "book")
 
 prices <- c(1.50, 6.35, 34.95)
-
-tax <- prices * tax_rate
-tax
 
 
 add_tax <- function(price, tax_rate) {
@@ -17,22 +14,21 @@ add_tax <- function(price, tax_rate) {
 }
 
 
-subtotal <- add_tax(prices, tax_rate)
-subtotal
+totals <- add_tax(prices, tax_rate)
 
-invoice <- data.frame(item, prices, subtotal)
+invoice <- data.frame(item, prices, totals)
 invoice
 
 
 
+
+## Boxplots Demo
 library(dplyr)
 library(hflights)
 library(compareGroups)
 
 mydata <- tbl_df(hflights)  # dplyr version of a data frame
-
 mydata
-
 summary(mydata)
 
 boxplot(ArrTime ~ UniqueCarrier,
@@ -49,20 +45,19 @@ boxplot(ActualElapsedTime ~ Origin,
 
 
 ## dplyr package: AS airlines and destinations
-
 AS <- mydata %>%
-    select(UniqueCarrier:ActualElapsedTime, Origin:Distance) %>%
+    select(UniqueCarrier,ActualElapsedTime, Origin:Distance) %>%
     filter(UniqueCarrier == "AS")
 AS
 
-str(AS)
+# basic line plot
+plot(AS$ActualElapsedTime, type="l")
 
-
-## compareGroups package: comparing cancellations
+## compareGroups package: comparing high vs low volume carriers
 library(compareGroups)
 
-cancellations <- compareGroups(
-    Cancelled ~ Origin + as.factor(Month),
+origins <- compareGroups(
+    Origin ~ Cancelled + Diverted + DepDelay,
     data = mydata)
 
-createTable(cancellations)
+createTable(origins)

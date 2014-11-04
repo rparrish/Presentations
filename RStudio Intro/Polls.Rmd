@@ -1,0 +1,27 @@
+---
+title: "Polls"
+author: "Rollie Parrish"
+date: "Thursday, September 18, 2014"
+output: html_document
+---
+
+## How familiar are you with R? ##
+
+Never heard of it  
+Heard of it but never used  
+Actually tried it   
+Somewhat familiar  
+Use it regularly  
+Advanced user  
+
+
+
+
+## How familiar are you with RStudio? ##
+
+Never heard of it  
+Heard of it but never used  
+Actually tried it   
+Somewhat familiar  
+Use it regularly  
+Advanced user
