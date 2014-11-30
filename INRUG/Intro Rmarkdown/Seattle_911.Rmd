@@ -1,0 +1,17 @@
+---
+title: "Seattle 911 data"
+author: "Rollie Parrish"
+date: "Saturday, November 29, 2014"
+output: html_document
+---
+
+```{r load_data, warning=FALSE, message=FALSE, cache=TRUE}
+mydata <- read.csv("http://data.seattle.gov/api/views/v7yw-9wph/rows.csv?accessType=DOWNLOAD")
+
+```
+
+```{r summary, comment=""}
+summary(mydata)
+
+```
+
