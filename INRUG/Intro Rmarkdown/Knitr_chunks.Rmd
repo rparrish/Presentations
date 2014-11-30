@@ -1,0 +1,52 @@
+---
+title: "Knitr chunks"
+output:
+  html_document:
+    toc: yes
+---
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+### R code & results
+```{r, include=FALSE}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+### Plots
+```{r, include=FALSE, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+### Inline R code
+
+You can insert an R expression in-line by using a single back-tick with the letter r:
+
+```{r, results='asis', echo=FALSE}
+cat("`` Example: 1 + 1 = `r 1+1` ``")
+```
+results in
+
+Example: 1 + 1 = `r 1+1`
+
+### More ellaborate example
+
+```{r prop_test, comment=""}
+smokers  <- c( 80, 84 ) #, 129 ) #, 90)
+patients <- c( 86, 93 ) #, 136 ) #, 120)
+results <- prop.test(smokers, patients)
+
+p_value <- ifelse(results$p.value < .001, 0.001, round(results$p.value,3))
+p_eq_lt <- ifelse(p_value > .001,"=", "<")
+p_sig <- ifelse(results$p.value < .001, "", "not")
+
+results
+```
+
+This example includes the smoking status from `r length(patients)` groups of patients. ${\chi}^2$ analysis of the proportion of smokers vs non-smokers indicate they are `r p_sig` significantly different between groups ($p$-value `r paste(p_eq_lt, p_value)`).
+
+
+

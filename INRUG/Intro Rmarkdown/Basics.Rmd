@@ -1,0 +1,30 @@
+---
+title: "Basics"
+output: html_document
+---
+
+This is a Markdown document. Text can be ephasized in __bold__ or _italics.
+
+Bullet lists use a dash:
+
+- item one
+- item two
+    - sub element
+
+Ordinal lists use a number with period
+
+1. First
+2. Second
+    + sub-elements can be nested
+    + and both styles used together
+
+
+Code can be written `in-line like this` using back-ticks or in a block of text
+
+```
+Like this
+```
+
+
+
+
