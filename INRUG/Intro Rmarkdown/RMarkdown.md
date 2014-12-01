@@ -34,85 +34,130 @@ Overview
 - R Markdown is a "system"
 - Depends on:
     - Rmarkdown & knitr packages
-    - Pandoc (converts .md files to final output)
-    - RStudio
+    - Pandoc & RStudio
 
+![](RMarkdown-figure/2014-11-30_175325.png)
 
 R Markdown
 ================
 
-## Basic Markdown
+### Basic Markdown
 - narrative content written in plain text
 - basic formatting using a simple syntax
-- commonly used in web (blogging, Wikipedia content, etc.)
+- Markdown is commonly used in web content
+    (blogging, Wikipedia content, etc.)
 
-## R code chunks
+### R code chunks
 - incorporates the results of R code
 
-## Rendered into final output
+### Rendered into final output
 - html / pdf / Word / Presentations (like this one)
 
 
-A More Elaborate Example
+Basic Example
 ================
-class: small-code
-
-### Question
-Is the percentage of smokers significant different between groups?
-
-### Data
-
-For each group, the total number of patients and the number of smokers.
 
 ### Code
 
 ```r
-smokers  <- c( 80, 84 )
-patients <- c( 86, 93 )
+### Heading
+Hello world
 
-results <- prop.test(smokers, patients)
+2 + 2 = `r 2 + 2`
 ```
+
+
+### Heading
+Hello world
+
+2 + 2 = 4
+
+
+Another Example
+===============
+class: small-code
+
+```r
+summary(ChickWeight)
+```
+
+```
+     weight         Time          Chick     Diet   
+ Min.   : 35   Min.   : 0.0   13     : 12   1:220  
+ 1st Qu.: 63   1st Qu.: 4.0   9      : 12   2:120  
+ Median :103   Median :10.0   20     : 12   3:120  
+ Mean   :122   Mean   :10.7   10     : 12   4:118  
+ 3rd Qu.:164   3rd Qu.:16.0   17     : 12          
+ Max.   :373   Max.   :21.0   19     : 12          
+                              (Other):506          
+```
+
+
+
+
+A More Elaborate Example
+================
+class: small-cod
+
+__Question__
+Is the percentage of smokers significantly different between groups of patients?
+
+__Data__ The count of patients and the count of smokers.
+
+
+```r
+conf.level <- 0.99
+smokers  <- c( 80, 84)#, 129, 90)
+patients <- c( 86, 93)#, 136, 120)
+```
+
 
 
 A More Elaborate Example
 ================
 class: small-code
 
-### Results of prop.test()
+
+
+```r
+results <- prop.test(smokers, patients)
+results
+```
 
 ```
 
 	2-sample test for equality of proportions with continuity
 	correction
 
-data:  smokers out of patients 
+data:  smokers out of patients
 X-squared = 0.1456, df = 1, p-value = 0.7028
-alternative hypothesis: two.sided 
+alternative hypothesis: two.sided
 95 percent confidence interval:
- -0.06486  0.11888 
+ -0.06486  0.11888
 sample estimates:
 prop 1 prop 2 
 0.9302 0.9032 
 ```
+_results assigned to a variable so we can extract the elements_
 
-Specific Elements
+
+
+A More Elaborate Example
 =====================
 class: small-code
 
 
+
+
 ```r
-if(results$p.value < .001) {
-    p_value <- 0.001
-    p_eq_lt <- "<"
-    p_sig <- ""
-
-    } else {
-    p_value <- round(results$p.value,3)
-    p_eq_lt <- "="
-    p_sig <- "not"
-    }
-
-estimates <- paste(round(results$estimate * 100,1),"%", collapse=" vs. ", sep="")
+estimates <- paste(round(results$estimate * 100,1),"%",
+                   collapse=" vs. ", sep="")
+p_value <- ifelse(results$p.value < .001,
+                  0.001, round(results$p.value,3))
+p_eq_lt <- ifelse(p_value > .001,
+                  "=", "<")
+p_sig <- ifelse(p_value > 1-conf.level,
+                "not", "")
 ```
 
 ### Results
@@ -122,18 +167,19 @@ estimates <- paste(round(results$estimate * 100,1),"%", collapse=" vs. ", sep=""
 |   0.703|=       |not   |93% vs. 90.3% |
 
 
-Final Text
+A More Elaborate Example
 ================
 
-### Code
 
 ```r
-This example evaluates the smoking status from `r length(patients)` groups of patients. ${\chi}^2$ analysis indicates the proportions of smokers are `r p_sig` significantly different between groups (`r estimates`, $p$-value `r paste(p_eq_lt, p_value)`).
+This example evaluates the smoking status from `r length(patients)` groups of patients.
+
+Chi-square analysis indicates the proportions of smokers are `r p_sig` significantly different between groups
+(`r estimates`, $p$-value `r paste(p_eq_lt, p_value)`).
 ```
 
-### Results
 
-This example includes the smoking status from 2 groups of patients. ${\chi}^2$ analysis of the proportion of smokers vs non-smokers indicate they are not significantly different between groups (93% vs. 90.3%, $p$-value = 0.703).
+This example includes the smoking status from 2 groups of patients. Chi-square analysis indicates the proportions of smokers are not significantly different between groups (93% vs. 90.3%, $p$-value = 0.703).
 
 
 

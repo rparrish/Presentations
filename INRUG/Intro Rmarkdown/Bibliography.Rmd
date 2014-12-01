@@ -1,16 +1,17 @@
 ---
 title: "Citations & Bibliographies"
+output:
+  html_document:
+    fig_caption: yes
+  pdf_document:
+    latex_engine: lualatex
+    toc: yes
+bibliography: Zotero.bib
 csl: apa.csl
 nocite: |
   @patanwala_comparison_2008
   @barreveld_preventive_2013
-output:
-  pdf_document:
-    fig_caption: yes
-    toc: yes
-  html_document:
-    fig_caption: yes
-bibliography: zotero.bib
+
 ---
 
 This is an R Markdown document. Barreveld reports that "Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents"[-@barreveld_preventive_2013]. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
@@ -22,10 +23,10 @@ plot(cars)
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any [@moiniche_systematic_1999, pp. 35] embedded R code chunks within the document. You can embed [-@moiniche_systematic_1999] an R code chunk like this:
 
+This bibliography file was exported from Zotero.
 
 
-
-\newpage  
+\newpage
 
 ### Resources
 
