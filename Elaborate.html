@@ -88,19 +88,19 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="results" class="section level3">
 <h3>Results</h3>
-<p>This example includes count of smokers from 2 groups of patients. Chi-square analysis indicates the proportions of smokers are not significantly different between groups not significantly different between groups (93% vs. 90.3%, <span class="math">\(p\)</span>-value = 0.703).</p>
-<pre><code>
-    2-sample test for equality of proportions with continuity
-    correction
-
-data:  smokers out of patients
-X-squared = 0.1456, df = 1, p-value = 0.7028
-alternative hypothesis: two.sided
-95 percent confidence interval:
- -0.06486  0.11888
-sample estimates:
-prop 1 prop 2 
-0.9302 0.9032 </code></pre>
+<p>This example includes the smoking status from 2 groups of patients. <span class="math">\({\chi}^2\)</span> analysis of the proportion of smokers vs non-smokers indicate they are not significantly different between groups (93% vs. 90.3%, <span class="math">\(p\)</span>-value = 0.703, 99% confidence level).</p>
+<pre><code>    
+        2-sample test for equality of proportions with continuity
+        correction
+    
+    data:  smokers out of patients
+    X-squared = 0.1456, df = 1, p-value = 0.7028
+    alternative hypothesis: two.sided
+    99 percent confidence interval:
+     -0.09022  0.14423
+    sample estimates:
+    prop 1 prop 2 
+    0.9302 0.9032</code></pre>
 </div>
 
 
