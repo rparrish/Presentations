@@ -26,6 +26,8 @@ p_sig <- ifelse(p_value > 1-conf.level, "not", "")
 
 ```
 
+
+
 ```{r table, results='asis', echo=FALSE}
 mydata <- data.frame(Smokers = smokers, 
                      Total_Patients = patients, 
