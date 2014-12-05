@@ -54,21 +54,18 @@ R Markdown
 - html / pdf / Word / Presentations (like this one)
 
 
-Basic Example
+Inline Example
 ================
 
 ### Code
 ```{r, eval=FALSE, results='asis'}
-### Heading
-Hello world
-
+### Results
 2 + 2 = `r 2 + 2`
 
 ```
 
 
-### Heading
-Hello world
+### Results
 
 2 + 2 = `r 2 + 2`
 
@@ -77,9 +74,33 @@ Another Example
 ===============
 class: small-code
 ```{r table_code}
+
+
 summary(ChickWeight)
 
 ```
+
+```{r hello_world}
+x <- "Hello"
+y <- "world"
+
+paste(x,y)
+```
+
+
+Graphics
+================
+
+
+```{r plot1, echo=FALSE, fig.width=7, dev='png', fig.cap='Race', fig.align='center'}
+#par(mfrow=c(1,2))
+plot1 <- boxplot(InsectSprays$count ~ InsectSprays$spray,
+                 main = "Insect Spray data",
+                 xlab = "type of spray",
+                 ylab = "count of insects")
+
+```
+
 
 
 
@@ -114,7 +135,6 @@ results <- prop.test(smokers, patients)
 results
 
 ```
-_results assigned to a variable so we can extract the elements_
 
 
 
@@ -122,7 +142,7 @@ A More Elaborate Example
 =====================
 class: small-code
 
-
+_results are assigned to variables so we can insert the elements inline_
 
 ```{r results_values, echo=TRUE}
 

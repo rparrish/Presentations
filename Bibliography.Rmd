@@ -7,7 +7,8 @@ output:
     latex_engine: lualatex
     toc: yes
 bibliography: Zotero.bib
-csl: apa.csl
+foo: bar
+csl: american-medical-association.csl
 nocite: |
   @patanwala_comparison_2008
   @barreveld_preventive_2013
@@ -16,14 +17,14 @@ nocite: |
 
 This is an R Markdown document. Barreveld reports that "Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents"[-@barreveld_preventive_2013]. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-```{r}
-plot(cars)
+```{r, echo=FALSE, fig.align='center', fig.height=4}
+plot(cars, main = "Speed and stopping distance of cars")
 ```
+Metadata: `r library(rmarkdown); metadata$foo`
 
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any [@moiniche_systematic_1999] embedded R code chunks within the document. You can embed an R code chunk like this [-@moiniche_systematic_1999]:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any [@moiniche_systematic_1999, pp. 35] embedded R code chunks within the document. You can embed [-@moiniche_systematic_1999] an R code chunk like this:
-
-This bibliography file was exported from Zotero.
+This bibliography was managed by Zotero and exported as a .bibex file from Zotero. It is displayed in AMA format using a Citation Style Language (CSL) file from CitationStyles.org.
 
 
 \newpage
