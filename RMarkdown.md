@@ -54,21 +54,18 @@ R Markdown
 - html / pdf / Word / Presentations (like this one)
 
 
-Basic Example
+Inline Example
 ================
 
 ### Code
 
 ```r
-### Heading
-Hello world
-
+### Results
 2 + 2 = `r 2 + 2`
 ```
 
 
-### Heading
-Hello world
+### Results
 
 2 + 2 = 4
 
@@ -91,6 +88,26 @@ summary(ChickWeight)
  Max.   :373   Max.   :21.0   19     : 12          
                               (Other):506          
 ```
+
+
+```r
+x <- "Hello"
+y <- "world"
+
+paste(x,y)
+```
+
+```
+[1] "Hello world"
+```
+
+
+Graphics
+================
+
+
+<img src="RMarkdown-figure/plot1.png" title="Race" alt="Race" style="display: block; margin: auto;" />
+
 
 
 
@@ -138,7 +155,6 @@ sample estimates:
 prop 1 prop 2 
 0.9302 0.9032 
 ```
-_results assigned to a variable so we can extract the elements_
 
 
 
@@ -146,7 +162,7 @@ A More Elaborate Example
 =====================
 class: small-code
 
-
+_results are assigned to variables so we can insert the elements inline_
 
 
 ```r
