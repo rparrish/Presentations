@@ -32,7 +32,7 @@ results in
 
 Example: 1 + 1 = `r 1+1`
 
-### More ellaborate example
+### More elaborate example
 
 ```{r prop_test, comment=""}
 smokers  <- c( 80, 84 ) #, 129 ) #, 90)
