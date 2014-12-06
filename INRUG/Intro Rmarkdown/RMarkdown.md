@@ -22,7 +22,7 @@
 
 
 
-RMarkdown
+RMarkdown & Knitr
 ===============
 author: Rollie Parrish
 date: Dec 5, 2014
@@ -31,7 +31,7 @@ date: Dec 5, 2014
 
 Overview
 ===============
-- R Markdown is a "system"
+- R Markdown used to generate dynamic documents from R
 - Depends on:
     - Rmarkdown & knitr packages
     - Pandoc & RStudio
@@ -57,7 +57,6 @@ R Markdown
 Inline Example
 ================
 
-### Code
 
 ```r
 ### Results
@@ -69,46 +68,30 @@ Inline Example
 
 2 + 2 = 4
 
-
-Another Example
-===============
-class: small-code
-
-```r
-summary(ChickWeight)
-```
-
-```
-     weight         Time          Chick     Diet   
- Min.   : 35   Min.   : 0.0   13     : 12   1:220  
- 1st Qu.: 63   1st Qu.: 4.0   9      : 12   2:120  
- Median :103   Median :10.0   20     : 12   3:120  
- Mean   :122   Mean   :10.7   10     : 12   4:118  
- 3rd Qu.:164   3rd Qu.:16.0   17     : 12          
- Max.   :373   Max.   :21.0   19     : 12          
-                              (Other):506          
-```
-
-
-```r
-x <- "Hello"
-y <- "world"
-
-paste(x,y)
-```
-
-```
-[1] "Hello world"
-```
-
-
-Graphics
+Knitr
 ================
 
+Processes the R Code chunks along with R Markdown to produce final output
 
-<img src="RMarkdown-figure/plot1.png" title="Race" alt="Race" style="display: block; margin: auto;" />
+"Chuck options" control how the R code is processed.
 
 
+Example: Graphics
+================
+```
+{r plot1, fig.width=10, fig.align='center'}
+```
+
+<img src="RMarkdown-figure/plot1-1.png" title="plot of chunk plot1" alt="plot of chunk plot1" style="display: block; margin: auto;" />
+
+
+Example: Graphics
+=================
+```
+{r plot2, fig.width=5, fig.align='right'}
+```
+
+<img src="RMarkdown-figure/plot2-1.png" title="plot of chunk plot2" alt="plot of chunk plot2" style="display: block; margin: auto 0 auto auto;" />
 
 
 
@@ -146,14 +129,14 @@ results
 	2-sample test for equality of proportions with continuity
 	correction
 
-data:  smokers out of patients
+data:  smokers out of patients 
 X-squared = 0.1456, df = 1, p-value = 0.7028
-alternative hypothesis: two.sided
+alternative hypothesis: two.sided 
 95 percent confidence interval:
- -0.06486  0.11888
+ -0.06486486  0.11887836 
 sample estimates:
-prop 1 prop 2 
-0.9302 0.9032 
+   prop 1    prop 2 
+0.9302326 0.9032258 
 ```
 
 
@@ -199,6 +182,16 @@ This example includes the smoking status from 2 groups of patients. Chi-square a
 
 
 
+
+
+Additional Resources
+=================
+
+- http://rmarkdown.rstudio.com/
+
+- http://yihui.name/knitr/
+
+- http://shiny.rstudio.com/articles/rmarkdown.html
 
 
 
