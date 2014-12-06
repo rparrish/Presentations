@@ -3,7 +3,7 @@ title: "Basics"
 output: html_document
 ---
 
-This is a Markdown document. Text can be ephasized in __bold__ or _italics.
+This is a Markdown document. Text can be ephasized in __bold__ or _italics_.
 
 Bullet lists use a dash:
 
@@ -14,15 +14,16 @@ Bullet lists use a dash:
 Ordinal lists use a number with period
 
 1. First
-2. Second
-    + sub-elements can be nested
-    + and both styles used together
+3. Second
+    - sub-elements can be nested
+    - both styles
+2. Third
+1. Fourth
 
-
-Code can be written `in-line like this` using back-ticks or in a block of text
+Code can be written `in-line like this` using back-ticks or
 
 ```
-Like this
+in a block of text like this
 ```
 
 

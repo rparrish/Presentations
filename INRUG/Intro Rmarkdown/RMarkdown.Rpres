@@ -22,7 +22,7 @@
 
 
 
-RMarkdown
+RMarkdown & Knitr
 ===============
 author: Rollie Parrish
 date: Dec 5, 2014
@@ -31,7 +31,7 @@ date: Dec 5, 2014
 
 Overview
 ===============
-- R Markdown is a "system"
+- R Markdown used to generate dynamic documents from R
 - Depends on:
     - Rmarkdown & knitr packages
     - Pandoc & RStudio
@@ -57,7 +57,6 @@ R Markdown
 Inline Example
 ================
 
-### Code
 ```{r, eval=FALSE, results='asis'}
 ### Results
 2 + 2 = `r 2 + 2`
@@ -69,32 +68,23 @@ Inline Example
 
 2 + 2 = `r 2 + 2`
 
-
-Another Example
-===============
-class: small-code
-```{r table_code}
-
-
-summary(ChickWeight)
-
-```
-
-```{r hello_world}
-x <- "Hello"
-y <- "world"
-
-paste(x,y)
-```
-
-
-Graphics
+Knitr
 ================
 
+Processes the R Code chunks along with R Markdown to produce final output
 
-```{r plot1, echo=FALSE, fig.width=7, dev='png', fig.cap='Race', fig.align='center'}
-#par(mfrow=c(1,2))
-plot1 <- boxplot(InsectSprays$count ~ InsectSprays$spray,
+"Chuck options" control how the R code is processed.
+
+
+Example: Graphics
+================
+```
+{r plot1, fig.width=10, fig.align='center'}
+```
+
+```{r plot1, echo=FALSE, fig.width=10, fig.align='center'}
+
+boxplot(InsectSprays$count ~ InsectSprays$spray,
                  main = "Insect Spray data",
                  xlab = "type of spray",
                  ylab = "count of insects")
@@ -102,6 +92,21 @@ plot1 <- boxplot(InsectSprays$count ~ InsectSprays$spray,
 ```
 
 
+Example: Graphics
+=================
+```
+{r plot2, fig.width=5, fig.align='right'}
+```
+
+```{r plot2, echo=FALSE, fig.width=5, fig.align='right'}
+
+boxplot(InsectSprays$count ~ InsectSprays$spray,
+                 main = "Insect Spray data",
+                 xlab = "type of spray",
+                 ylab = "count of insects")
+
+
+```
 
 
 
@@ -181,6 +186,16 @@ This example includes the smoking status from `r length(patients)` groups of pat
 
 
 
+
+
+Additional Resources
+=================
+
+- http://rmarkdown.rstudio.com/
+
+- http://yihui.name/knitr/
+
+- http://shiny.rstudio.com/articles/rmarkdown.html
 
 
 
