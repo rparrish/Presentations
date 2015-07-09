@@ -76,7 +76,7 @@ First Steps (RStudio)
     - Rtool if using Windows
     - LaTeX for generating .pdf documentation
 2. Create new project
-3. Write function
+3. Write functions
 4. Add documentation
 5. Build & reload
 6. Check
@@ -207,7 +207,7 @@ Sharing
 Resources
 ===============
 
-- Hillary Parker
-- Karl Broman
-- Hadley Wickham
+- Hillary Parker [Writing an R package from scratch](http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)
+- Karl Broman [R package primer - a tutorial](http://kbroman.org/pkg_primer/)
+- Hadley Wickham [R packages online book](http://r-pkgs.had.co.nz/)
 
