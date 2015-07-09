@@ -1,0 +1,51 @@
+<!-- https://github.com/ajlyons/rpres_css -->
+
+<style>
+
+.reveal h1, .reveal h2, .reveal h3 {
+  word-wrap: normal;
+  -moz-hyphens: none;
+}
+
+.footer {
+    color: black; background: #E8E8E8;
+    position: fixed; top: 90%;
+    text-align:center; width:100%;
+}
+
+.small-code pre code {
+  font-size: 1em;
+}
+
+
+</style>
+
+
+
+RMarkdown & Knitr
+===============
+author: Rollie Parrish
+date: July 10, 2015
+
+
+Overview
+===============
+-  R Studio v. 99.451
+- View()
+- Code Completion
+- Projects
+
+
+
+```r
+x <- lm(mpg ~ disp, data = mtcars)
+
+plot(mpg ~ disp, data = mtcars)
+
+abline(x)
+```
+
+![plot of chunk code_completion](RStudio_updates-figure/code_completion-1.png) 
+
+
+
