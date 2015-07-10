@@ -20,9 +20,7 @@
 
 </style>
 
-
-
-RMarkdown & Knitr
+RStudio updates
 ===============
 author: Rollie Parrish
 date: July 10, 2015
@@ -37,11 +35,19 @@ Overview
 
 
 
+
+Code Completion
+==================
+
 ```r
-x <- lm(mpg ~ disp, data = mtcars)
+#x <- lm(mpg ~ disp, data = mtcars)
+x <- lm(mtcars$mpg ~ mtcars$hp)
 
-plot(mpg ~ disp, data = mtcars)
 
+plot(mtcars$mpg ~ mtcars$hp)
+
+
+#abline(x)
 abline(x)
 ```
 
