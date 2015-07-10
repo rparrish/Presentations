@@ -31,27 +31,26 @@ Overview
 -  R Studio v. 99.451
 - View()
 - Code Completion
+- Vim keybindings
 - Projects
 
 
 
 
-Code Completion
+RStudio: Code Completion
 ==================
-```{r code_completion}
-#x <- lm(mpg ~ disp, data = mtcars)
-x <- lm(mtcars$mpg ~ mtcars$hp)
 
 
-plot(mtcars$mpg ~ mtcars$hp)
+```{r code_completion, eval = FALSE }
 
+## read and write data files
 
-#abline(x)
-abline(x)
+seattle_911 <- read.csv("Seattle_911.csv")
 
+write(seattle_911, file = "sea_911.rda", )
 
+write.csv(mtcars, file = "sea_copy.csv",)
 
 ```
 
-
-
+Tools --> Global Options --> Code --> Completion
