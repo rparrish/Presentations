@@ -145,8 +145,8 @@ Dataset saved as seperate .rda file in  `/data` folder
 
 ```
 # source: data.seattle.gov
-mydata <- read.csv(file="Seattle_911.csv")
-save(mydata, file='data/mydata.rda')
+sea_911 <- read.csv(file="Seattle_911.csv")
+save(sea_911, file='data/mydata.rda')
 
 ```
 
@@ -157,7 +157,7 @@ Demo - Dataset Documentation
 2. Contains Roxygen comments and the name of the dataset
 
 ```
-#' Mydata short description.
+#' sea_911 short description.
 #'
 #' This is a longer description.
 #' Can be multiple lines if necessary.
@@ -169,7 +169,7 @@ Demo - Dataset Documentation
 #'   ...
 #' }
 #' @source \url{http://wherediditcomefrom.org}
-"mydata"
+"sea_911"
 
 
 ```
