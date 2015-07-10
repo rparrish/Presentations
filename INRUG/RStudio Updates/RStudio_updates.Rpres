@@ -20,6 +20,8 @@
 
 </style>
 
+
+
 RStudio updates
 ===============
 author: Rollie Parrish
@@ -29,8 +31,8 @@ date: July 10, 2015
 Overview
 ===============
 -  R Studio v. 99.451
-- View()
 - Code Completion
+- View()
 - Vim keybindings
 - Projects
 
@@ -40,12 +42,16 @@ Overview
 RStudio: Code Completion
 ==================
 
+Tools --> Global Options --> Code --> Completion
 
 ```{r code_completion, eval = FALSE }
 
-## read and write data files
+# remember to setwd to source file location
 
-seattle_911 <- read.csv("Seattle_911.csv")
+## read and write data files
+# source: data.seattle.gov
+
+seattle_911 <- read.csv("Seattle_911.csv", )
 
 write(seattle_911, file = "sea_911.rda", )
 
@@ -53,4 +59,49 @@ write.csv(mtcars, file = "sea_copy.csv",)
 
 ```
 
-Tools --> Global Options --> Code --> Completion
+
+
+RStudio: View()
+===============
+
+Used to inspect dataset interatively, similar to Excel's AutoFilter
+
+
+```{r view, eval = FALSE}
+
+View(seattle_911)
+
+```
+- factors --> picklist
+- continuous --> slider
+- text search
+    - global vs individual columns
+    - incremental
+    - multiple columns
+
+
+RStudio: Vim keybindings
+========================
+
+Familiar with Vim? Try it out
+
+Tools --> Code --> Editing --> Enable Vim editing mode
+
+
+
+
+Projects
+========
+
+- Helps keep organized
+- Project-level settings
+- Empty Project vs GitHub repo vs Package
+
+
+
+
+
+Questions
+=========
+
+
