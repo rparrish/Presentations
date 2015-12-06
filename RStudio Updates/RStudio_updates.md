@@ -25,12 +25,12 @@
 RStudio updates
 ===============
 author: Rollie Parrish
-date: July 10, 2015
+date: Nov. 25, 2015
 
 
 Overview
 ===============
--  R Studio v. 99.451
+- R Studio v. 99.451
 - Code Completion
 - View()
 - Projects
@@ -45,20 +45,22 @@ RStudio: Code Completion
 Tools --> Global Options --> Code --> Completion
 
 
+
+
 ```r
-# remember to setwd to source file location
+#library(dplyr)
+# Source: data.seattle.gov
+# remember to setwd() to source file location
+# enter each line in console window
 
-## read and write data files
-# source: data.seattle.gov
+# load("Data/seattle_911.rda")
 
-seattle_911 <- read.csv("Seattle_911.csv")
-
-write.csv(mtcars, file = "sea_copy.csv", row.names = FALSE)
+# seattle_911 <- mutate(seattle_911,
+#                      Type = as.factor(Type))
 ```
 
 
-
-RStudio: View()
+Studio: View()
 ===============
 
 Used to inspect dataset interatively, similar to Excel's AutoFilter
@@ -89,18 +91,12 @@ Projects
 
 
 
-Version Control
-==============
-
-
-
-
 RStudio: Vim/Emacs keybindings
 ========================
 
 Familiar with Vim or Emacs? Try it out
 
-Tools --> Global Options --> Code --> Editing --> Enable Vim editing mode
+Tools --> Global Options --> Code --> Editing --> Enable Vim or Emacs editing mode
 
 
 

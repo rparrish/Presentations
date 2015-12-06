@@ -1,31 +1,8 @@
-<!-- https://github.com/ajlyons/rpres_css -->
-
-<style>
-
-.reveal h1, .reveal h2, .reveal h3 {
-  word-wrap: normal;
-  -moz-hyphens: none;
-}
-
-.footer {
-    color: black; background: #E8E8E8;
-    position: fixed; top: 90%;
-    text-align:center; width:100%;
-}
-
-.small-code pre code {
-  font-size: 1em;
-}
-
-
-</style>
-
-
-
-RStudio updates
-===============
-author: Rollie Parrish
-date: Nov. 25, 2015
+Rstudio features
+========================================================
+author: Rollie.Parrish@providence.org
+date: 2015-11-25
+autosize: true
 
 
 Overview
@@ -42,7 +19,28 @@ Overview
 RStudio: Code Completion
 ==================
 
+![alt text](Rstudio_features-figure/code_completion.png)
+
+***
+
+
+ - automatically displayed
+ - all available objects (vectors, data frames, functions, etc.)
+ - installed packages
+ - files
+ - dplyr pipelines
+ - inline help tooltips
+ - closing parens/brackets
+ - formula arguments
+
+## To enable, go to:
 Tools --> Global Options --> Code --> Completion
+
+
+
+
+RStudio: Code Completion walkthrough
+==================
 
 ```{r code_completion_prep, eval=FALSE, echo=FALSE}
 # source: data.seattle.gov
@@ -50,7 +48,7 @@ Tools --> Global Options --> Code --> Completion
 library(readr)
 library(dplyr)
 
-seattle_911 <- read_csv("Seattle_911.csv")
+seattle_911 <- read_csv("Data/Seattle_911.csv")
 seattle_911 <-
         seattle_911 %>%
         rename(Lat = Latitude, Long = Longitude) %>%
@@ -63,40 +61,63 @@ save(seattle_911, file="Data/seattle_911.rda")
 
 ```
 
-```{r code_completion, eval = FALSE}
-#library(dplyr)
-# Source: data.seattle.gov
+<!--
 # remember to setwd() to source file location
 # enter each line in console window
+-->
+
+```{r code_completion, eval = FALSE}
+suppressWarnings(library(dplyr))
 
 # load("Data/seattle_911.rda")
+
+# glimpse(seattle_911)
 
 # seattle_911 <- mutate(seattle_911,
 #                      Type = as.factor(Type))
 
+# seattle_911 %>%
+#         select(Type, Datetime) %>%
+#         count(Type, sort = TRUE)
 
+# seattle_911 %>%
+#        group_by(lubridate::floor_date(Datetime, unit = "hour")) %>%
+#        tally() %>%
+#        with(., plot(n, type = "b"))
 
 ```
 
+- Seattle Fire Department calls on 2015-07-08
+- Source: data.seattle.gov
 
-Studio: View()
+
+RStudio: View()
 ===============
 
-Used to inspect dataset interatively, similar to Excel's AutoFilter
+Used to inspect dataset interactively, similar to Excel's AutoFilter
 
 
-```{r view, eval = FALSE}
 
-View(seattle_911)
-
-```
 - factors --> picklist
 - continuous --> slider
 - text search
     - global vs individual columns
     - incremental search
     - pop-out browser
+- refreshes when data frame is modified
 
+
+RStudio: View() walkthrough
+===============
+
+```{r view, eval = FALSE}
+
+mydata <- seattle_911
+View(mydata)
+
+mydata <- filter(mydata, Type == "Rescue Elevator")
+
+```
 
 
 Projects
