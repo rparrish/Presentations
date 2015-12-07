@@ -7,11 +7,11 @@ autosize: true
 
 Overview
 ===============
-- R Studio v. 99.451
-- Code Completion
-- View()
+R Studio v. 99.451
+
+- Code completion
+- View() function
 - Projects
-- Vim keybindings
 
 
 
@@ -23,14 +23,11 @@ RStudio: Code Completion
 
 ***
 
-
- - automatically displayed
  - all available objects (vectors, data frames, functions, etc.)
  - installed packages
  - files
- - dplyr pipelines
+ - works in dplyr pipelines
  - inline help tooltips
- - closing parens/brackets
  - formula arguments
 
 ## To enable, go to:
@@ -98,6 +95,7 @@ RStudio: View() walkthrough
 mydata <- seattle_911
 View(mydata)
 
+#
 mydata <- filter(mydata, Type == "Rescue Elevator")
 ```
 
@@ -105,27 +103,25 @@ mydata <- filter(mydata, Type == "Rescue Elevator")
 Projects
 ========
 
-- Helps keep organized
-- Sets the working directory
-- Three types
-  - Empty project (new or existing directory)
-  - Version Control (clone an existing repository)
-  - Package (additional settings and files)
+Useful when working on different analysis projects
+
+Keeps all the associated files project files together
+ - scripts, data files, figures, reports
+ - dedicated R workspace and history
+ - Sets the working directory & other options
+ - Loads source files when project is re-opened
 
 
-
-RStudio: Vim/Emacs keybindings
-========================
-
-Familiar with Vim or Emacs? Try it out
-
-Tools --> Global Options --> Code --> Editing --> Enable Vim or Emacs editing mode
+***
+![alt text](Rstudio_features-figure/project_folders.png)
 
 
 
 
 
-Questions
+
+Questions?
 =========
+
 
 
