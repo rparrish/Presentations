@@ -7,7 +7,6 @@ autosize: true
 
 Overview
 ===============
-R Studio v. 99.451
 
 - Code completion
 - View() function
@@ -22,13 +21,11 @@ RStudio: Code Completion
 ![alt text](Rstudio_features-figure/code_completion.png)
 
 ***
-
- - all available objects (vectors, data frames, functions, etc.)
- - installed packages
- - files
+Speeds up typing by displaying picklists and tool tips.
+ - context-aware
+ - all available objects (vectors, data frames, functions, installed packages, etc.)
+ - files navigation
  - works in dplyr pipelines
- - inline help tooltips
- - formula arguments
 
 ## To enable, go to:
 Tools --> Global Options --> Code --> Completion
@@ -74,16 +71,10 @@ suppressWarnings(library(dplyr))
 RStudio: View()
 ===============
 
-Used to inspect dataset interactively, similar to Excel's AutoFilter
+Used to inspect dataset interactively in a grid
 
-
-
-- factors --> picklist
-- continuous --> slider
-- text search
-    - global vs individual columns
-    - incremental search
-    - pop-out browser
+- incremental text search
+- pop-out to a separate window
 - refreshes when data frame is modified
 
 
