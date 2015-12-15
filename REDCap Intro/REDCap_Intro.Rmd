@@ -255,7 +255,7 @@ Nursing audits to reduce the incidence of catheter-associated urinary tract infe
 <img src="images/foley.jpg" alt="Map" style="width: 400px;"/>
 
 
-[Live Demo](https://ssl.providence.org/redcap/redcap_v6.0.1/DataEntry/,DanaInfo=redcap.providence.org+index.php?pid=280&id=1&page=cauti_audit&event_id=683)
+[Live Demo](http://redcap.providence.org/redcap/redcap_v6.0.1/DataEntry/index.php?pid=280&id=1&page=cauti_audit&event_id=683)
 
 </div>
 
@@ -324,7 +324,7 @@ TAVR Coordinator for overall program & one at each non-Providence clinic.
 
 <img src="images/tavr.jpg" alt="Map" style="width: 250px;"/>
 
-[Live Demo](https://ssl.providence.org/redcap/redcap_v6.0.1/DataEntry/,DanaInfo=redcap.providence.org+record_status_dashboard.php?pid=292)
+[Live Demo](http://redcap.providence.org/redcap/redcap_v6.0.1/DataEntry/record_status_dashboard.php?pid=292)
 
 </div>
 
@@ -352,7 +352,7 @@ Simultaneously implementing Obstructive Sleep Apnea screening (STOP-BANG) protoc
 
 <img src="images/exparel.jpg" alt="Map" style="width: 350px;"/>
 
-[Live Demo](https://ssl.providence.org/redcap/redcap_v6.0.1/DataEntry/,DanaInfo=redcap.providence.org+index.php?pid=230&page=demographics&id=202&event_id=622)
+[Live Demo](http://redcap.providence.org/redcap/redcap_v6.0.1/DataEntry/index.php?pid=230&page=demographics&id=202&event_id=622)
 
 </div>
 
