@@ -1,7 +1,7 @@
 Rstudio features
 ========================================================
 author: Rollie.Parrish@providence.org
-date: 2015-11-25
+date: 2015-12-16
 autosize: true
 
 
@@ -11,6 +11,7 @@ Overview
 - Code completion
 - View() function
 - Projects
+- RMarkdown Templates
 
 
 
@@ -45,8 +46,6 @@ RStudio: Code Completion walkthrough
 
 
 ```r
-suppressWarnings(library(dplyr))
-
 # load("Data/seattle_911.rda")
 
 # glimpse(seattle_911)
@@ -54,14 +53,16 @@ suppressWarnings(library(dplyr))
 # seattle_911 <- mutate(seattle_911,
 #                      Type = as.factor(Type))
 
+
 # seattle_911 %>%
 #         select(Type, Datetime) %>%
 #         count(Type, sort = TRUE)
 
+
 # seattle_911 %>%
 #        group_by(lubridate::floor_date(Datetime, unit = "hour")) %>%
 #        tally() %>%
-#        with(., plot(n, type = "b"))
+#        with(., plot(n, type = "b", main = "Number of Seattle 911 calls on July 8, 2015 by hour of day"))
 ```
 
 - Seattle Fire Department calls on 2015-07-08
@@ -107,6 +108,25 @@ Keeps all the associated files project files together
 ![alt text](Rstudio_features-figure/project_folders.png)
 
 
+
+
+RMarkdown templates
+===================
+
+- Custom layout and formating of Rmarkdown reports
+- Distributed as part of an R package
+- Quick demo
+
+
+
+
+
+Discussion Points
+=================
+
+- Version control for data analysis projects
+- R Package development/collaboration (templates, functions, etc.)
+- Interest in a setting up server-based R/RStudio
 
 
 
