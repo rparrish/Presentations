@@ -57,15 +57,6 @@ seattle_911 <- mutate(seattle_911,
 seattle_911 %>%
          select(Type, Datetime) %>%
          count(Type, sort = TRUE)
-
-
- seattle_911 %>%
-        group_by(lubridate::floor_date(Datetime, unit = "hour")) %>%
-        tally() %>%
-        with(., plot(n, type = "b",
-                     main = "Number of Seattle 911 calls on July 8, 2015 by hour of day",
-                     xlab = "Hour of day",
-                     ylab = "Number of calls"))
 ```
 
 - Seattle Fire Department calls on 2015-07-08
