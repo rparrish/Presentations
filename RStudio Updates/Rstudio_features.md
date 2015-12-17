@@ -46,17 +46,26 @@ RStudio: Code Completion walkthrough
 
 
 ```r
+library(dplyr)
+library(dplyr)
+
+load("Data/seattle_911.rda")
 load("Data/seattle_911.rda")
 
-glimpse(seattle_911)
+dplyr::glimpse(seattle_911)
 
 seattle_911 <- mutate(seattle_911,
                      Type = as.factor(Type))
-
+seattle_911 <- mutate(seattle_911,
+                      Type = as.factor(Type))
 
 seattle_911 %>%
          select(Type, Datetime) %>%
          count(Type, sort = TRUE)
+
+seattle_911 %>%
+        select(Type, Datetime) %>%
+        count(Type, sort = TRUE)
 ```
 
 - Seattle Fire Department calls on 2015-07-08
