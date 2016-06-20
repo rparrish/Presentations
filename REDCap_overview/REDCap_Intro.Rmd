@@ -10,17 +10,14 @@ logo: logo.png
 incremental: true
 ---
 
-## Improved data management
+## Quality Improvement data
 <div class="columns-2">
 ### Motivation
-- Used Excel for nearly everything
-- Excessive time spent manipulating data, cleaning/fixing errors, etc.
-- Needed Decentralized data collection
-- Attempted: Access, InfoPath, Sharepoint, others
-
+- We used Excel for nearly everything
+- Excessive time spent copying & pasting data, emailing files, cleaning/fixing errors, etc.
 
 ###  Needed a solution that was:
- - Inexpensive and no new desktop software (Cheap)
+ - Inexpensive and did not require software installation (Cheap)
  - Compliant / Data Management Best Practices  (Good)
  - Easy to develop, deploy & use (Fast)
 
@@ -48,71 +45,32 @@ dev.off()
 
 
 ## What is REDCap?
-<div class="columns-2">
 
 
 - Secure, web-based application for building and managing online surveys and databases.
-- Primary focus is data management for clinical research.
-- HIPAA/HITECH compliant. Can be used in 21 CFR Part 11, FSMA and EU/international environments.
-- Free for REDCap consortium members (Funded by NIH grant).
+- Primary focus is data management for clinical research. 
+- Free (Funded by NIH grant).
 
 
-### Fits in somewhere with...
+### Key Features
 
-<img src="images/REDCap_venn.png" alt="Map" style="width: 450px;"/>
-</div>
-
-```{r venn, eval=FALSE, echo=FALSE, message=FALSE,fig.height=6}
-library(venneuler)
-
-vd <- venneuler(c(Excel=2.6, Access=2.5, Sharepoint=2.3, SurveyMonkey=2.3, SelectSurvey=2.2, EpiInfo=2.0, Velos=2.1, REDCap=5,
-                  "REDCap&Excel"=0.5,
-                  "REDCap&Access"=0.5,
-                  "REDCap&Sharepoint"=0.5,
-                  "REDCap&SurveyMonkey"=0.5,
-                  "REDCap&SelectSurvey"=0.5,
-#                  "REDCap&PATS"=0.5,
-                  "SurveyMonkey&SelectSurvey"=0.25,
-                  "REDCap&Velos"=0.5,
-                  "REDCap&EpiInfo"=0.5,
-                  "Excel&Access"=0.75,
-                  "Excel&Sharepoint"=.75
-                  ),
-                labels=c("Excel/Access", "Sharepoint/Infopath", "SurveyMonkey/SelectSurvey", "Velos/PATS")
-                )
-png("REDCap Intro/images/REDCap_venn.png", width = 6, height = 6, units = 'in', res = 300)
-plot(vd)
-dev.off()
-
-```
+- Intuitive user interface that streamlines the design process. 
+- No database experience is needed to begin using the software. 
+- Built-in online support/training videos
+- Users can independently make project modifications, even after data collection has begun.
+- Project owners have autonomy and control to add new users
 
 
-
-## >1200 Institutions Worldwide
-- Vanderbilt - 17,000 users & 8900 projects
-- Harvard Catalyst/Partners - >8000 users & 2000 projects
+## >1700 Institutions Worldwide
 
 <img src="images/map.png" alt="Map" style="width: 1000px;"/>
 
-<div class="notes">
-<div class="columns-2">
-### Worldwide
-- 1200 institutional partners
-- 86 countries
-- 181,000 users
-
-### Local
-- 130 projects
-- 215 users
-</div>
-</div>
 
 
 
 
 
-
-## Local Usage
+## How it's used locally
 <div class="columns-2">
 ### QI Registries
 - Cardiac Level I
@@ -120,71 +78,24 @@ dev.off()
 - Total Joint Replacements
 
 ### QI Audits
-- Spine Center of Excellence
 - Sepsis Bundle compliance
 - Delirium (CAM) screening
 - Diabetes Management audits
 
 ### Operational Projects
-- PMG Unusual Occurance Reports
-- Quantros Events
+- PHC Serious Safety Events
+- Workplace Violence Log
 
 
 ### IRB-approved Research
-- PostAnesthesia Events
-(CodeBlue/Stroke)
-- Spine Surgery & IV Tylenol
-- Pneumonia Case tracker
+- Prescription Drug Assistance Program
+- Spine Surgery Pain Protocol
+- Nursing Barriers to Patient Mobility
 
 <div>
 
-<div class="notes">
-### Chart audits & Registries
- - Sepsis Bundle compliance, Cardiac Level 1, PCI mortality reviews
- - PostAnesthesia Adverse Events (CodeBlue)
- - TAVR case management
-</div>
-
-<!-- Hide
-
-## Key Features
-### Usability
-
- - Fast & Easy to Use
- - Flexible
- - Autonomous utilization
-
-### Security
-
- - Individual Access
- - Role-based permissions
- - Protected Health Information (PHI)
- - Audit trails
 
 
-### Data Quality
-
- - Data Validation
- - Data Export
-
-
-<div class="notes">
-
-- Intuitive user interface that streamlines the design process. No database experience is needed to begin using the software. Built-in online support/training videos
-- Users can independently make project modifications, even after data collection has begun.
-- Project owners have autonomy and control to add new users
-
-- Providence Network ID/password, Providence internal network access only, HIPAA/HITECH compliant.
-- PHI fields can be removed from data exports. Dates can be shifted randomly.
-- Who did what when. Logs when data was changed, viewed, or exported.
-- control access to different roles, forms & functions
-
-- restrict data entry using picklists, number ranges, dates, etc.
-- Data Quality rules can check for logical integrity
-- reduces burden during analysis/reporting
-
-
-</div>
 
 
 
@@ -199,41 +110,6 @@ Text, numeric, dates, Yes/No, long paragraphs, pick lists, check boxes, radio bu
 This is just a basic view of a typical data entry form.
 </div>
 
-
-## Activity Log
-<img src="images/audit_log.png" alt="Map" style="width: 800px;"/>
-
-<div class="notes">
-This shows the type of information tracked in the activity log.
-</div>
-
-
-## Protected Health Information
-<img src="images/phi.png" alt="Map" style="width: 800px;"/>
-
-<div class="notes">
-This shows the various options for de-identifying data exports.
-</div>
-
-
-## User Access / Roles
-<img src="images/user_access.png" alt="Map" style="width: 800px;"/>
-
-<div class="notes">
-This shows the settings for end-user permissisions.
-</div>
-
-
-
-## Data Exports
-<img src="images/data_export.png" alt="Map" style="width: 800px;"/>
-
-<div class="notes">
-Raw data and syntax files
-</div>
-
-
--- END Hide -->
 
 
 ## Catheter Audits
@@ -253,8 +129,6 @@ Nursing audits to reduce the incidence of catheter-associated urinary tract infe
 <img src="images/foley.jpg" alt="Map" style="width: 400px;"/>
 
 
-[Live Demo](http://redcap.providence.org/redcap/redcap_v6.0.1/DataEntry/index.php?pid=280&id=1&page=cauti_audit&event_id=683)
-
 </div>
 
 
@@ -263,7 +137,6 @@ Nursing audits to reduce the incidence of catheter-associated urinary tract infe
 1. Admission screening for substance abuse
 2. Plan of care sent to next provider
 
-Both initiatives are paper-based workflows
 
 #### Requirements
 
@@ -276,204 +149,16 @@ Both initiatives are paper-based workflows
 
 
 
-
-## Psychiatric QI Initiatives
-
-### Automated Import
-
-- SQL query to get previous week's discharges
-- API to import the new cases into REDCap
-
-```{r eval=FALSE}
-## scheduled script on Mondays at 2am
-new_cases <- edwQuery("Psych_discharges.sql")
-write_redcap(new_cases)
-```
-
-
-### Auditor's workqueue in REDCap
-<img src="images/HBIPS_need_abstracted.png" alt="Map" style="width:"/>
-
-## Psychiatric QI Initiatives
-
-<img src="images/HBIPS_form.png" alt="Map" style="width:"/>
-
 ## Psychiatric QI Initiatives
 
 <img src="images/HBIPS_graph.png" alt="Map" style="width:"/>
 
 
-## Transcatheter Valve Cases
-<div class="columns-2">
-
-90 cases/year, 55% by non-Providence cardiologists
-
-CMS mandates tests, labs, and patient-reported outcomes (KCCQ) at
-Preop, 30days and 1 year Postop.
-
-TAVR Coordinator for overall program & one at each non-Providence clinic.
-
-#### Requirements
-
-- track overall referrals to Providence Spokane Heart Institute Valve program
-- monitor the status of each patient longitudinally
-- capture additional data elements
-- isolate non-Providence clinic's data
-
-<img src="images/tavr.jpg" alt="Map" style="width: 250px;"/>
-
-[Live Demo](http://redcap.providence.org/redcap/redcap_v6.0.1/DataEntry/record_status_dashboard.php?pid=292)
-
-</div>
-
-
-## Total Knee Replacements
-<div class="columns-2">
-
-Multiple surgeons/Anesthesiologists using different multi-modal pain control regimens:
-
- - IV Acetaminophen
- - Exparel
- - On-Q pump
- - Femoral Nerve block
- - various other medications
-
-Simultaneously implementing Obstructive Sleep Apnea screening (STOP-BANG) protocol
-
-
-#### Requirements
-
-- multiple chart reviewers
-- calculate the Morphine-Equivalent Daily Doses (MEDD)
-- de-identified data for statistical analysis (propensity-score matching)
-
-
-<img src="images/exparel.jpg" alt="Map" style="width: 350px;"/>
-
-[Live Demo](http://redcap.providence.org/redcap/redcap_v6.0.1/DataEntry/index.php?pid=230&page=demographics&id=202&event_id=622)
-
-</div>
-
 
 
 ## Additional Resources
-
-  [Data Management for Clinical Research](https://www.coursera.org/course/datamanagement) - Oct 27th
-
-This free 5 week course by Vanderbilt/Coursera is designed to teach important concepts related to research data planning, collection, storage and dissemination.
 
   [OCTRI](http://www.ohsu.edu/xd/research/centers-institutes/octri/resources/octri-research-services/project-based-data-collection.cfm) OHSU REDCap site
 
   [ITHS](https://www.iths.org/RCBG) U of W REDCap site
 
-
-
-## Choose Your Own Adventure
-<div class="columns-2">
-
-### Live Demo
-[Total Joint Replacements](https://ssl.providence.org/redcap/redcap_v6.0.1/DataEntry/,DanaInfo=redcap.providence.org+index.php?pid=230&page=demographics&id=202&event_id=622)
-
-[Transcatheter Valve Cases](https://ssl.providence.org/redcap/redcap_v6.0.1/DataEntry/,DanaInfo=redcap.providence.org+index.php?pid=230&page=demographics&id=202&event_id=622)
-
-[GAMUT Database](https://ampa.org/redcap/redcap_v6.0.1/DataEntry/record_status_dashboard.php?pid=26)
-
-[Create a new project](https://ssl.providence.org/redcap/,DanaInfo=redcap.providence.org+index.php?action=create)
-
-### More Details
-
-[Technical](#)
-
-[Security](#)
-
-[Advanced Features](#)
-
-[Enterprise-wide requirements](#)
-
-</div>
-
-
-<div class="notes">
-###What would you like to see?
-
-### Demo
-Total Joint - data entry, branching logic, de-identified data export
-Create - ease of creating a project
-
-Technical - current and future requirements
-Security - user and server details
-Advanced - more advanced features
-Enterprise deployment
-
-</div>
-
-
-## Technical Details
-
-- Based on PHP & MySQL
-- Windows/IIS or Linux/Apache
-- Application webserver and database server on single server
-- Data stored in Entity Attribute Value format (long, narrow table)
-
-[Back...](#13 target=self)
-
-
-## Enterprise-wide deployment
-
-### Technical requirements
-
- - Active Directory universally
- - Separate web & database servers.
- - Forward-facing with SSL (https) encryption
- - At-rest encryption
- - Permit email to pass through firewall
-
-## Enterprise-wide expansion
-### Operational Requirements
-
-- Server support (IT)
-- Application support (centralized)
-    - upgrades
-    - plugins
-    - configuration
-- End-user support (de-centralized)
-    - education
-    - promotion
-    - best-practices
-    - project support
-
-
-[Back...](#13 target=self)
-
-
-## Security
-### Users
-
-- ActiveDirectory to logon
-- Access to individual projects
-- Expiration dates
-- Record Locking
-
-### Server
-
- - Located in Sabey Datacenter (single server)
- - Accessible from internal network only
- - Active Directory for PHSWA domain currently
-
-[Back...](#13 target=self)
-
-
-
-## Advanced Features
-
-- Data Quality Rules
-- Data Queries
-- Basic Reports
-- Longitudinal Data
-- Calculated Fields
-- Randomization
-- Dual Data Entry
-- Plugins
-- API Import/Export
-
-[Back...](#13 target=self)
