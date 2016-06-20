@@ -1,0 +1,60 @@
+---
+title: "Intro to the EDW"
+subtitle: "Enterprise Data Warehouse"
+output:
+    ioslides_presentation:
+        smaller: FALSE
+        fig_width: 6
+        fig_height: 6
+logo: logo.png
+incremental: true
+---
+
+## What is the EDW?
+
+
+- Brings data from disparate sources to single location
+- Standard naming conventions regardless of source  
+    - ie. "MRN" vs "PatientID", vs "medical_record"
+- Contains data from 
+    - Epic 
+    - Lawson
+    - Premier
+    - many others  
+- Large SQL Server instance with 1 Terabyte of RAM
+
+
+
+## How does it work?
+
+- Data copied from Chronicles (Cache) to Clarity then to EDW every morning
+- Primarily used to build standardized reports:
+    - ProvInfo 
+    - Crystal Reports
+    - Tableau
+    - Web-I
+- Secondary use for ad-hoc reporting (limited access outside of HI)
+
+
+## Pros & Cons
+<div class="columns-2">
+### Pros
+- Access to vast amounts of data
+- Over long time frames
+- Automated data extracts
+- Allows for more complex analysis
+
+### Cons
+- Access is limited to HI
+- Poor documentation 
+- Limited training support
+- Requires SQL expertise
+
+<div>
+
+
+
+
+
+
+
