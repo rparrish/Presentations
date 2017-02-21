@@ -1,12 +1,21 @@
-Rstudio features
-========================================================
-author: Rollie.Parrish@providence.org
-date: 2015-12-16
-autosize: true
+---
+title: "RStudio features"
+author: 
+ - "Rollie Parrish"
+ - "<rollie.parrish@providence.org>"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output: 
+    pdf_document:
+      includes:
+        in_header: header.tex
+      highlight: tango
+    fontsize: 11pt
+    geometry: margin=.75in
+---
 
 
-Overview
-===============
+
+## Overview
 
 - Code completion
 - View() function
@@ -16,26 +25,26 @@ Overview
 
 
 
-RStudio: Code Completion
-==================
+## RStudio: Code Completion
 
 ![alt text](Rstudio_features-figure/code_completion.png)
 
 ***
-Speeds up typing by displaying picklists and tool tips.
+Speeds up typing by displaying picklists and tool tips.  
+
  - context-aware
  - all available objects (vectors, data frames, functions, installed packages, etc.)
  - files navigation
  - works in dplyr pipelines
 
-## To enable, go to:
+###  To enable, go to:
+
 Tools --> Global Options --> Code --> Completion
 
 
 
 
-RStudio: Code Completion walkthrough
-==================
+## RStudio: Code Completion walkthrough
 
 ```{r code_completion_prep, eval=FALSE, echo=FALSE}
 # source: data.seattle.gov
@@ -63,28 +72,17 @@ save(seattle_911, file="Data/seattle_911.rda")
 
 ```{r code_completion, eval = FALSE}
 library(dplyr)
-library(dplyr)
 
-load("Data/seattle_911.rda")
 load("Data/seattle_911.rda")
 
 dplyr::glimpse(seattle_911)
 
 seattle_911 <- mutate(seattle_911,
-                     Type = as.factor(Type))
-seattle_911 <- mutate(seattle_911,
                       Type = as.factor(Type))
-
-seattle_911 %>%
-         select(Type, Datetime) %>%
-         count(Type, sort = TRUE)
 
 seattle_911 %>%
         select(Type, Datetime) %>%
         count(Type, sort = TRUE)
-
-
-
 
 ```
 
@@ -92,8 +90,7 @@ seattle_911 %>%
 - Source: data.seattle.gov
 
 
-RStudio: View()
-===============
+## RStudio: View()
 
 Used to inspect dataset interactively in a grid
 
@@ -102,8 +99,7 @@ Used to inspect dataset interactively in a grid
 - refreshes when data frame is modified
 
 
-RStudio: View() walkthrough
-===============
+## RStudio: View() walkthrough
 
 ```{r view, eval = FALSE}
 
@@ -116,12 +112,12 @@ mydata <- filter(mydata, Type == "Rescue Elevator")
 ```
 
 
-Projects
-========
+## Projects
 
 Useful when working on different analysis projects
 
-Keeps all the associated files project files together
+Keeps all the associated files project files together  
+  
  - scripts, data files, figures, reports
  - dedicated R workspace and history
  - Sets the working directory & other options
@@ -134,8 +130,7 @@ Keeps all the associated files project files together
 
 
 
-RMarkdown templates
-===================
+## RMarkdown templates
 
 - Custom layout and formating of Rmarkdown reports
 - Distributed as part of an R package
@@ -145,8 +140,7 @@ RMarkdown templates
 
 
 
-Discussion Points
-=================
+## Discussion Points
 
 - Version control for data analysis projects
 - R Package development/collaboration (templates, functions, etc.)
@@ -155,8 +149,7 @@ Discussion Points
 
 
 
-Questions?
-=========
+## Questions?
 
 
 
