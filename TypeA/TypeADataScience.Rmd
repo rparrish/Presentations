@@ -1,0 +1,180 @@
+---
+title: "Clinical Data Analytics"
+subtitle: "Type A Data Science"
+author: "Rollie Parrish"
+date: "2017-02-22"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      chakra: libs/remark-latest.min.js
+---
+
+# Type A & Type B Data Scientists
+
+### Type A Data Scientist: 
+> The A is for Analysis. This type is primarily 
+> concerned with making sense of data or working with it in a fairly static way. 
+> The Type A Data Scientist is very similar to a statistician (and may be one) 
+> but knows all the practical details of working with data that aren’t taught 
+> in the statistics curriculum: data cleaning, methods for dealing with very 
+> large data sets, visualization, deep knowledge of a particular domain, 
+> writing well about data, and so on.
+
+### Type B Data Scientist: 
+> The B is for Building. Type B Data Scientists share some statistical background 
+> with Type A, but they are also very strong coders  and may be trained software 
+> engineers. The Type B Data Scientist is mainly 
+> interested in using data “in production.” They build models which interact 
+> with users, often serving recommendations (products, people you may know, 
+> ads, movies, search results).
+
+> Michael Hochster (Quora post)
+
+
+---
+
+# "Opinionated data analysis"
+
+Hilary Parker (StitchFix, Not So Standard Deviations podcast)
+
+1. Reproducible Analysis
+2. Version Control
+3. 
+
+---
+
+# one
+
+- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>2</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
+
+.footnote[
+[1] 中文用户请看[这份教程](http://slides.yihui.name/xaringan/zh-CN.html)
+
+[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
+]
+
+---
+# remark.js vs xaringan
+
+Some differences between using remark.js (left) and using **xaringan** (right):
+
+.pull-left[
+1. Start with a boilerplate HTML file;
+
+1. Plain Markdown;
+
+1. Write JavaScript to autoplay slides;
+
+1. Manually configure MathJax;
+
+1. Highlight code with `*`;
+
+1. Edit Markdown source and refresh browser to see updated slides;
+]
+
+.pull-right[
+1. Start with an R Markdown document;
+
+1. R Markdown (can embed R/other code chunks);
+
+1. Provide an option `autoplay`;
+
+1. Highlight code with `{{}}`;
+
+1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
+]
+
+.footnote[[*] Not really. See next page.]
+
+---
+
+# R Code
+---
+```{r comment='#'}
+# a boring regression
+fit = lm(dist ~ 1 + speed, data = cars)
+coef(summary(fit))
+
+```
+
+---
+# R Plots
+
+```{r cars, fig.height=4, dev='svg'}
+par(mar = c(4, 4, 1, .1))
+plot(cars, pch = 19, col = 'darkgray', las = 1)
+abline(fit, lwd = 2)
+```
+
+---
+# Some Tips
+
+- Slides can be automatically played if you set the `autoplay` option under `nature`, e.g. go to the next slide every 30 seconds (this can be useful for lightning talks):
+
+    ```yaml
+    output:
+      xaringan::moon_reader:
+        nature:
+          autoplay: 30000
+    ```
+
+--
+
+- The option `highlightLines: true` of `nature` will highlight code lines that start with `*` or are wrapped in `{{ }}`;
+
+    ```yaml
+    output:
+      xaringan::moon_reader:
+        nature:
+          highlightLines: true
+    ```
+
+    See examples on the next page.
+
+---
+
+# Some Tips
+
+
+.pull-left[
+## Left
+An example using a leading `*`:
+
+    ```r
+    if (TRUE) {
+    ** message("Very important!")
+    }
+    ```
+Output:
+```r
+if (TRUE) {
+* message("Very important!")
+}
+```
+
+This is invalid R code, so it is a plain fenced code block that is not executed.
+]
+
+.pull-right[
+## Right
+An example using `{{}}`:
+
+    `r ''````{r tidy=FALSE}
+    if (TRUE) {
+    *{{ message("Very important!") }}
+    }
+    ```
+Output:
+```{r tidy=FALSE}
+if (TRUE) {
+{{ message("Very important!") }}
+}
+```
+
+It is valid R code so you can run it.
+]
+
