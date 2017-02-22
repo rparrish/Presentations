@@ -38,7 +38,8 @@ output:
 
 > Michael Hochster (Quora post)
 
-[Doing Data Science at Twitter - Robert Chang] (https://medium.com/@rchang/my-two-year-journey-as-a-data-scientist-at-twitter-f0c13298aee6#.74wf3wyka)
+[Doing Data Science at Twitter - Robert Chang](https://medium.com/@rchang/my-two-year-journey-as-a-data-scientist-at-twitter-f0c13298aee6#.74wf3wyka)
+
 
 ---
 
