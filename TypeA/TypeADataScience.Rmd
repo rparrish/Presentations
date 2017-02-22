@@ -10,9 +10,6 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       chakra: libs/remark-latest.min.js
----
-# Background
-
 
 ---
 
@@ -29,7 +26,7 @@ output:
 
 ---
 
-# Type A & Type B Data Scientists
+# Types of Data Science
 
 ### Type B  
 > The B is for Building. Type B Data Scientists share some statistical background 
@@ -47,16 +44,17 @@ output:
 
 # Comparison
 
-Common ground 
-- Programming Languages 
-- Reproducibile
-- Common Tool kits: R/Python/SAS, SQL, Regular Expressions, Version Control, etc.
+Common approaches: 
+ - Programming Languages (R/Python/SAS/Julia/Scala, etc.)
+ - SQL 
+ - Regular Expressions
+ - Version Control
 
 .pull-left[
 ## Type A - analysis
 
 Smaller Datasets  
-Traditional Statistics
+Traditional Statistics 
 
 Output: 
   - Analysis (written report, presentation, blog post, article)
@@ -79,17 +77,14 @@ Output:
 
 # Approach 
 
-1. R / R-Studio 
-2. R Packages  
+![Source: R for Data Science](data-science.png)
+
+1. R / R-Studio
+2. R Packages
   - tidyverse
   - dplyr & magrittr (pipes)
   - ggplot2
   - Rmarkdown
-  
-3. Johns Hopkins University Data Science Specialization (Coursera.org)
-
-![Source: R for Data Science](data-science.png)
-
 
 
 .footnote[
@@ -100,28 +95,98 @@ Output:
 ---
 # Examples 
 
-- ProvInfo reports (blood products)
-- Multiple data sources  
-  - TYREX pouch utilization
-  - SSOS Contract Incentives)
-- Mortality Reviews (EDW, REDCap, email)
+- Mortality Reviews
+- TYRX pouch utilization
+- Provider Contract Incentives
 
 ---
 
-# R Code
+# Basic ETL Example - Mortality Review 
+
+
+```{r, eval = FALSE}
+## Get patients from EDW
+mortalities <- edwSQL("SQL/Mortalities.sql", resource="EDWDBProd")
+
+## Send to REDCap
+uri <- "https://redcap.providence.org/redcap/api/"
+
+redcap_write(mortality_cases, redcap_uri = uri, token = token)
+```
+
+![mortality review snapshot](mortality_review.png)
+
 ---
-```{r comment='#'}
-# a boring regression
-fit = lm(dist ~ 1 + speed, data = cars)
-coef(summary(fit))
+
+# Tyrx antibiotic pouch
+
+## Prompt  
+ - Are there significant differences in demographics or proposed criteria between
+patients with devices only vs devices with TYRX?
+ - How many cases met the proposed ’appropriateness’ criteria?
+ 
+## Methods
+ - Case list from ICD Registry - demographics & clinical criteria
+ - ICD Infections from ICD Infection database (REDCap)
+ - TYRX pouch data from EDW
+ 
+[Tyrx Utilization.pdf](TYRX Utilization.pdf)
+
+
+---
+
+# Provider Contracts - Quality Incentives
+
+## Prompt  
+ - Determine if quality data can be obtained
+ - Set benchmarks (trends and targets)
+ 
+## Methods
+
+ - Get the Initial population (demographics and surgeons)
+ - Separate query for each metric
+ - JOIN data sets in R (dplyr)
+ - .csv files vs SQL
+ 
+ 
+[Surgical Incentive Metrics](Surgery_Incentive_Metrics.pdf)
+
+
+---
+
+# Provider Contracts - Quality Incentives
+
+## RMarkdown file structure 
+
+```r
+# Process
+
+## Outpatient: Percent discharged the same day
+
+'''{r, child = "SameDay_procedures.Rmd"}
+
+'''
+
+
+\newpage  
+## Inpatient: Discharge Orders by 9am  
+
+'''{r, child = "DC_orders.Rmd"}
+
+'''
 
 ```
 
----
-# R Plots
 
-```{r cars, fig.height=4, dev='svg'}
-par(mar = c(4, 4, 1, .1))
-plot(cars, pch = 19, col = 'darkgray', las = 1)
-abline(fit, lwd = 2)
-```
+---
+
+# Future 
+
+- Communication (R User community, Slack, etc.)
+- Training Resources (Data Camp, Coursera)
+- Internal Git Repositories 
+- R packages 
+
+---
+
+# Discussion 

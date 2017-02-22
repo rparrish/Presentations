@@ -17,10 +17,6 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Background
-
-
----
 
 # Types of Data Science
 
@@ -35,7 +31,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Type A &amp; Type B Data Scientists
+# Types of Data Science
 
 ### Type B  
 &gt; The B is for Building. Type B Data Scientists share some statistical background 
@@ -53,16 +49,17 @@ class: center, middle, inverse, title-slide
 
 # Comparison
 
-Common ground 
-- Programming Languages 
-- Reproducibile
-- Common Tool kits: R/Python/SAS, SQL, Regular Expressions, Version Control, etc.
+Common approaches: 
+ - Programming Languages (R/Python/SAS/Julia/Scala, etc.)
+ - SQL 
+ - Regular Expressions
+ - Version Control
 
 .pull-left[
 ## Type A - analysis
 
 Smaller Datasets  
-Traditional Statistics
+Traditional Statistics 
 
 Output: 
   - Analysis (written report, presentation, blog post, article)
@@ -85,17 +82,14 @@ Output:
 
 # Approach 
 
-1. R / R-Studio 
-2. R Packages  
+![Source: R for Data Science](data-science.png)
+
+1. R / R-Studio
+2. R Packages
   - tidyverse
   - dplyr &amp; magrittr (pipes)
   - ggplot2
   - Rmarkdown
-  
-3. Johns Hopkins University Data Science Specialization (Coursera.org)
-
-![Source: R for Data Science](data-science.png)
-
 
 
 .footnote[
@@ -106,40 +100,102 @@ Output:
 ---
 # Examples 
 
-- ProvInfo reports (blood products)
-- Multiple data sources  
-  - TYREX pouch utilization
-  - SSOS Contract Incentives)
-- Mortality Reviews (EDW, REDCap, email)
+- Mortality Reviews
+- TYRX pouch utilization
+- Provider Contract Incentives
 
 ---
 
-# R Code
----
+# Basic ETL Example - Mortality Review 
 
-```r
-# a boring regression
-fit = lm(dist ~ 1 + speed, data = cars)
-coef(summary(fit))
-```
-
-```
-#               Estimate Std. Error   t value     Pr(&gt;|t|)
-# (Intercept) -17.579095  6.7584402 -2.601058 1.231882e-02
-# speed         3.932409  0.4155128  9.463990 1.489836e-12
-```
-
----
-# R Plots
 
 
 ```r
-par(mar = c(4, 4, 1, .1))
-plot(cars, pch = 19, col = 'darkgray', las = 1)
-abline(fit, lwd = 2)
+## Get patients from EDW
+mortalities &lt;- edwSQL("SQL/Mortalities.sql", resource="EDWDBProd")
+
+## Send to REDCap
+uri &lt;- "https://redcap.providence.org/redcap/api/"
+
+redcap_write(mortality_cases, redcap_uri = uri, token = token)
 ```
 
-![](TypeADataScience_files/figure-html/cars-1.svg)&lt;!-- --&gt;
+![mortality review snapshot](mortality_review.png)
+
+---
+
+# Tyrx antibiotic pouch
+
+## Prompt  
+ - Are there significant differences in demographics or proposed criteria between
+patients with devices only vs devices with TYRX?
+ - How many cases met the proposed ’appropriateness’ criteria?
+ 
+## Methods
+ - Case list from ICD Registry - demographics &amp; clinical criteria
+ - ICD Infections from ICD Infection database (REDCap)
+ - TYRX pouch data from EDW
+ 
+[Tyrx Utilization.pdf](TYRX Utilization.pdf)
+
+
+---
+
+# Provider Contracts - Quality Incentives
+
+## Prompt  
+ - Determine if quality data can be obtained
+ - Set benchmarks (trends and targets)
+ 
+## Methods
+
+ - Get the Initial population (demographics and surgeons)
+ - Separate query for each metric
+ - JOIN data sets in R (dplyr)
+ - .csv files vs SQL
+ 
+ 
+[Surgical Incentive Metrics](Surgery_Incentive_Metrics.pdf)
+
+
+---
+
+# Provider Contracts - Quality Incentives
+
+## RMarkdown file structure 
+
+```r
+# Process
+
+## Outpatient: Percent discharged the same day
+
+'''{r, child = "SameDay_procedures.Rmd"}
+
+'''
+
+
+\newpage  
+## Inpatient: Discharge Orders by 9am  
+
+'''{r, child = "DC_orders.Rmd"}
+
+'''
+
+```
+
+
+---
+
+# Future 
+
+- Communication (R User community, Slack, etc.)
+- Training Resources (Data Camp, Coursera)
+- Internal Git Repositories 
+- R packages 
+
+---
+
+# Discussion
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
