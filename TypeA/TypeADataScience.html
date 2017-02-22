@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Clinical Data Analytics</title>
+    <title>Type A Data Science</title>
     <meta charset="utf-8">
     <meta name="author" content="Rollie Parrish" />
     <meta name="date" content="2017-02-22" />
-    <link href="libs/remark-css/example.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Clinical Data Analytics
-## Type A Data Science
+# Type A Data Science
 ### Rollie Parrish
 ### 2017-02-22
 
 ---
 
+# Background
 
-# Type A &amp; Type B Data Scientists
 
-### Type A Data Scientist: 
+---
+
+# Types of Data Science
+&gt; Michael Hochster (Quora post)
+
+### Type A 
 &gt; The A is for Analysis. This type is primarily 
 &gt; concerned with making sense of data or working with it in a fairly static way. 
 &gt; The Type A Data Scientist is very similar to a statistician (and may be one) 
@@ -30,7 +34,12 @@ class: center, middle, inverse, title-slide
 &gt; large data sets, visualization, deep knowledge of a particular domain, 
 &gt; writing well about data, and so on.
 
-### Type B Data Scientist: 
+---
+
+# Type A &amp; Type B Data Scientists
+&gt; Michael Hochster (Quora post)
+
+### Type B  
 &gt; The B is for Building. Type B Data Scientists share some statistical background 
 &gt; with Type A, but they are also very strong coders  and may be trained software 
 &gt; engineers. The Type B Data Scientist is mainly 
@@ -38,7 +47,6 @@ class: center, middle, inverse, title-slide
 &gt; with users, often serving recommendations (products, people you may know, 
 &gt; ads, movies, search results).
 
-&gt; Michael Hochster (Quora post)
 
 
 ---
@@ -53,48 +61,64 @@ Hilary Parker (StitchFix, Not So Standard Deviations podcast)
 
 ---
 
-# one
+# Comparison
 
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)&lt;sup&gt;2&lt;/sup&gt; "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
-
-.footnote[
-[1] 中文用户请看[这份教程](http://slides.yihui.name/xaringan/zh-CN.html)
-
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
-
----
-# remark.js vs xaringan
-
-Some differences between using remark.js (left) and using **xaringan** (right):
+Shared aspects 
+- Programming / Reproducibile
+- Common Tool kits: R/Python/SAS, SQL, Regular Expressions, Version Control
 
 .pull-left[
-1. Start with a boilerplate HTML file;
+## Type A
 
-1. Plain Markdown;
+Smaller Datasets  
+Traditional Statistics
 
-1. Write JavaScript to autoplay slides;
-
-1. Manually configure MathJax;
-
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
+Output: 
+  - Analysis (written report, presentation, blog post, article)
+  - Data Wrangling
+  - Automation/ETL
 ]
-
+  
 .pull-right[
-1. Start with an R Markdown document;
+## Type B
+"Big Data"  
+Machine Learning/Deep Learning  
 
-1. R Markdown (can embed R/other code chunks);
+Output: 
+  - Applications
+  - Large scale models
+  - Recommender systems
+]
+---
+# Basic Data Science Project
 
-1. Provide an option `autoplay`;
 
-1. Highlight code with `{{}}`;
+![Source: R for Data Science](data-science.png)
 
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
+.footnote[
+[1] [Source: R for Data Science](http://r4ds.had.co.nz/index.html)
 ]
 
-.footnote[[*] Not really. See next page.]
+
+---
+
+# Project Structure
+
+
+File structure
+
+
+
+
+---
+# Examples 
+
+- ProvInfo reports (blood products)
+- Multiple data sources  
+  - TYREX pouch utilization
+  - SSOS Contract Incentives)
+- Mortality Reviews (EDW, REDCap, email)
+- M &amp; M presentations
 
 ---
 
@@ -124,79 +148,6 @@ abline(fit, lwd = 2)
 ```
 
 ![](TypeADataScience_files/figure-html/cars-1.svg)&lt;!-- --&gt;
-
----
-# Some Tips
-
-- Slides can be automatically played if you set the `autoplay` option under `nature`, e.g. go to the next slide every 30 seconds (this can be useful for lightning talks):
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          autoplay: 30000
-    ```
-
---
-
-- The option `highlightLines: true` of `nature` will highlight code lines that start with `*` or are wrapped in `{{ }}`;
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          highlightLines: true
-    ```
-
-    See examples on the next page.
-
----
-
-# Some Tips
-
-
-.pull-left[
-## Left
-An example using a leading `*`:
-
-    ```r
-    if (TRUE) {
-    ** message("Very important!")
-    }
-    ```
-Output:
-```r
-if (TRUE) {
-* message("Very important!")
-}
-```
-
-This is invalid R code, so it is a plain fenced code block that is not executed.
-]
-
-.pull-right[
-## Right
-An example using `{{}}`:
-
-    ```{r tidy=FALSE}
-    if (TRUE) {
-    *{{ message("Very important!") }}
-    }
-    ```
-Output:
-
-```r
-if (TRUE) {
-* message("Very important!") 
-}
-```
-
-```
-## Very important!
-```
-
-It is valid R code so you can run it.
-]
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
