@@ -114,7 +114,7 @@ uri <- "https://redcap.providence.org/redcap/api/"
 
 redcap_write(mortality_cases, redcap_uri = uri, token = token)
 ```
-
+s
 ![mortality review snapshot](mortality_review.png)
 
 ---
