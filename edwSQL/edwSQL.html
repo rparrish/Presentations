@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Type A Data Science</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Rollie Parrish" />
+    <meta name="date" content="2017-02-22" />
+    <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Type A Data Science
+### Rollie Parrish
+### 2017-02-22
+
+---
+
+# Data Science approach
+
+![Source: R for Data Science](data-science.png)
+
+
+## Importing Data
+
+ - 80% of effort spent importing and preparing data for analysis
+ - ie. monthly exports of data files
+ 
+
+
+.footnote[
+[1] [Source: R for Data Science](http://r4ds.had.co.nz/index.html)
+]
+
+
+---
+# R packages for working with SQL databases
+
+- RODBC
+- odbc newer, faster (5x)
+
+
+## Requirements
+1. R / R-Studio
+2. R Packages
+   - tidyverse
+   - dplyr &amp; magrittr (pipes)
+   - odbc
+
+---
+## odbc
+
+typical method for loading a dataframe from SQL database
+
+     # Setup
+    library(odbc, DBI)
+    dsn &lt;- "EDWDBDev"
+    sql &lt;- "SELECT TOP 100 FROM StgEpicClarityPHS.dbo.HOSP_VISIT_CST"
+
+    # open connection
+    conn &lt;- dbConnect(odbc(), dsn = dsn)
+
+    # Get the results
+    queryResult &lt;- dbGetQuery(conn, sql)
+
+    # Close the connection
+    dbDisconnect(conn)
+
+    # Final results
+    mydata &lt;- queryResult
+
+---
+## edwSQL()
+
+ - Wrapper function for odbc
+ - Allows more complex SQL queries from .sql files 
+     
+
+```r
+# Setup  
+     
+# contains the edwSQL() function
+library(RPamisc) 
+    
+results &lt;- edwSQL("SQL/hvc.sql",  resource = "EDWDBDev")
+            
+mydata &lt;- results$data
+```
+ 
+    
+            
+ 
+---
+# Installing RPamisc
+
+   library(devtools)
+   
+   install_github("rparrish/RPamisc")
+
+
+
+
+
+---
+# Future 
+
+- [ ] Communication (R User community, Slack, etc.)
+- [ ] Training Resources (Data Camp, Coursera)
+- [x] Internal Git Repositories 
+   GitLab - []()
+- [x] R packages (cupid)
+
+
+---
+
+# Discussion
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"chakra": "libs/remark-latest.min.js"
+});
+if (window.HTMLWidgets) slideshow.on('showSlide', function (slide) {setTimeout(function() {window.dispatchEvent(new Event('resize'));}, 100)});</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
