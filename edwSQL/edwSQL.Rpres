@@ -45,8 +45,7 @@ odbc
 
 Standard method for loading a dataframe from SQL database
 
-
-```r
+```{r, echo = TRUE, eval = FALSE}
 # Setup
 library(odbc, DBI)
 dsn <- "EDWDBDev"
@@ -72,8 +71,7 @@ edwSQL()
  - Allows more complex SQL queries from .sql files
  - Returns additional metadata (status message , field names, time)
 
-
-```r
+```{r, echo = TRUE, eval = FALSE}
 # Setup
 # contains the edwSQL() function
 library(RPamisc)
@@ -84,22 +82,15 @@ mydata <- results$data
 
 edwSQL()
 ===========================================
-
-```r
+```{r, eval = FALSE}
 results
 ```
 
-
-```
-$data
-                mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4      21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag  21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710     22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-
-$stuff
-[1] "stuff"
+```{r, echo = FALSE}
+results <- list()
+results$data <- head(mtcars, 4)
+results$stuff <- "stuff"
+results
 ```
 
 
@@ -110,8 +101,7 @@ edwSQL()
 Use of separate .sql files
 
 
-
-```sql
+```{sql, eval = FALSE}
 -- hvc.sql
 
 SELECT TOP 100
@@ -132,8 +122,7 @@ FROM StgEpicClarityPHS.dbo.HOSP_VISIT_CST
 ========================================================
 # Installing RPamisc
 
-
-```r
+```{r, eval = FALSE}
 library(devtools)
 
 install.packages("odbc")

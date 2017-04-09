@@ -75,6 +75,7 @@ typical method for loading a dataframe from SQL database
 
  - Wrapper function for odbc
  - Allows more complex SQL queries from .sql files 
+ - Automatically opens &amp; closes the connection
      
 
 ```r
@@ -88,7 +89,16 @@ results &lt;- edwSQL("SQL/hvc.sql",  resource = "EDWDBDev")
 mydata &lt;- results$data
 ```
  
-    
+=======================================
+## edwSQL()
+
+
+```sql
+SELECT TOP 100 * FROM StgEpicClarityPHS.dbo.HOSP_VISIT_CST
+
+```
+
+hvc.sql
             
  
 ---
