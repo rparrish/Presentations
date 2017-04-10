@@ -16,7 +16,7 @@ Data Science approach
  - ie. monthly exports of data files
  - We can decrease the effort spent on importing data
 
-
+***
 ![Source: R for Data Science](data-science.png)
 
 
@@ -28,7 +28,7 @@ R packages for working with SQL databases
 ========================================================
 
 - `RODBC`
-- `odbc` newer, faster (5x)
+- `odbc` DBI-compliant, 5x faster
 
 
 ## Requirements
@@ -87,10 +87,10 @@ results
 ```
 
 ```{r, echo = FALSE}
-results <- list()
-results$data <- head(mtcars, 4)
-results$stuff <- "stuff"
+load("results.Rda")
+results$data$PAT_ENC_CSN_ID <- gsub("^..", "xy", results$data$PAT_ENC_CSN_ID)
 results
+
 ```
 
 
@@ -101,26 +101,59 @@ edwSQL()
 Use of separate .sql files
 
 
-```{sql, eval = FALSE}
--- hvc.sql
-
-SELECT TOP 100
-*
-FROM StgEpicClarityPHS.dbo.HOSP_VISIT_CST
-
-```
-
  - Removes single-line comments (- -)
- - Concatenates file into a single line
+ - Concatenates entire .sql file into a single line
  - Blocked comments not currently supported
  - Common Table Expressions (WITH ... AS...) not supported
+ 
+
+
+***
+
+```{sql, eval = FALSE}
+-- Example query
+SELECT 
+TOP 3
+
+  PAT_ENC_CSN_ID
+, ADMITDATE as Admit_dts
+, LEFT(HSP_LOC_NAME, 3) as Ministry
+
+FROM StgEpicClarityPHS.dbo.HOSP_VISITS_CST
+
+WHERE 1=1
+  AND LEFT(HSP_LOC_NAME, 3) = 'WSH'
+  AND DISCHARGEDATE
+    BETWEEN '2017-04-01' AND '2017-04-03'
+```
 
 
 
----
+Example uses
+=======================================
 
+Demographics, Transfer Orders and ventilator times for specific providers.
+
+```{r, examples, eval = FALSE}
+discharge_BASE <- edwSQL("SQL/discharges.sql", resource = resource)
+trf_orders     <- edwSQL("SQL/transfer_orders.sql", resource = resource)
+vent_times     <- edwSQL("SQL/vent_times.sql", resource = resource)
+tig_cases      <- edwSQL("SQL/tig_cases.sql", resource = resource)
+
+icu_data <- 
+    discharge_BASE %>% 
+    inner_join(trf_orders, by = "PAT_ENC_CSN_ID") %>%
+    left_join(vent_times, by = "PAT_ENC_CSN_ID") %>%
+    semi_join(tig_cases, by = "PAT_ENC_CSN_ID")
+    
+```
+
+
+
+
+
+Installing RPamisc
 ========================================================
-# Installing RPamisc
 
 ```{r, eval = FALSE}
 library(devtools)
@@ -136,22 +169,41 @@ install_github("rparrish/RPamisc",
                ref = "e65cfefd1645e8313d018492c26b80f3f19c8109")
 ```
 
-
-
-
+Future
 ========================================================
-# Future
 
-- [ ] Communication
-   - R User community
-   - WellsSpot, Slack, etc.
-- [ ] Training Resources
-   - Data Camp, Coursera
-- [x] Internal Git Repositories
-   - GitLab - []() development server
-- [x] R packages
-   - cupid - SQL queries for Clinical Data Analysts
+### Parameterized queries
+```{r, eval = FALSE}
+vent_times <- 
+    template_query("vent_times",
+                   params = list(start_date   = "2017-04-01",
+                                 end_date     = "2017-04-30",
+                                 ministries   = ministries))
+```
+
+### Import & Tidy in a single function
+
+```{r, eval = FALSE}
+
+icu_data <- get_icu_data(start_date, end_date, ministries)
+```
 
 
+
+Discussion
 ========================================================
-# Discussion
+
+- [_] Communication
+    - R User community
+    - WellsSpot, Slack, etc.
+- [_] Training Resources
+    - Data Camp, Coursera
+   
+*** 
+
+- [X] Internal Git Repositories
+    - GitLab - []() development server https://u90166.providence.org
+- [X] R packages
+    - cupid - SQL queries for Clinical Data Analysts
+    - templates - Rmarkdown templates (reports, Poster presentations)
+

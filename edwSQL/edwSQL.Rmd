@@ -71,7 +71,7 @@ typical method for loading a dataframe from SQL database
  - Wrapper function for odbc
  - Allows more complex SQL queries from .sql files 
      
-```{r, echo = TRUE, eval = FALSE}
+```{r, echo = TRUE, eval = TRUE}
 # Setup  
      
 # contains the edwSQL() function
@@ -81,10 +81,9 @@ results <- edwSQL("SQL/hvc.sql",  resource = "EDWDBDev")
             
 mydata <- results$data
 
-
+results
 ```
  
-    
             
  
 ---
