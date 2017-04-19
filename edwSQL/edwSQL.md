@@ -15,7 +15,9 @@ Data Science approach
  - ~80% of effort is spent on acquiring data for analysis
  - We can automate using SQL instead of raw data files
 
-<img src="data-science.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="1000px" />
+***
+
+<img src="data-science.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="1200px" />
 
 [Source: R for Data Science](http://r4ds.had.co.nz/index.html)
 
@@ -109,17 +111,16 @@ $status_message
 edwSQL()
 =======================================
 
-Use of separate .sql files
-
+Use of separate .sql files written in Toad, etc.
 
  - Removes single-line comments (- -)
  - Concatenates the entire .sql file into a single line
- - Blocked comments not currently supported
- - Common Table Expressions (WITH ... AS...) not supported
+ - Not supported:
+    - Multi-line comment blocks (/\* .... \*/)
+    - Common Table Expressions (WITH ... AS...)
 
 
 
-***
 ### hvc.sql
 
 
@@ -146,6 +147,8 @@ Example uses
 =======================================
 
 Demographics, Transfer Orders and ventilator times for specific providers.
+
+Can bring in data from any SQL source and join using `dplyr`.
 
 
 ```r
@@ -184,6 +187,12 @@ install_github("rparrish/RPamisc",
                ref = "e65cfefd1645e8313d018492c26b80f3f19c8109")
 ```
 
+
+### Additional Info
+
+http://rparrish.github.io/RPamisc/
+
+
 Future
 ========================================================
 
@@ -205,6 +214,26 @@ vent_times <-
 ```r
 icu_data <- get_icu_data(start_date, end_date, ministries)
 ```
+
+
+New R options at Providence
+========================================================
+
+### R Toolkit (Desktop/Laptop)
+ - RStudio
+ - Git for Windows
+ - Pandoc & MikTek (PDF reports)
+ - Notepad++
+
+### R Studio VHD (for VDI)
+
+***
+### R Studio Server (testing)
+ - accessed via web browser
+ - Shiny Apps
+ - HTML Reports/Notebooks
+ - Scheduled scripts
+
 
 
 

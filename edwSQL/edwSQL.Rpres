@@ -15,7 +15,9 @@ Data Science approach
  - ~80% of effort is spent on acquiring data for analysis
  - We can automate using SQL instead of raw data files
 
-```{r, out.width = "1000px", echo = FALSE}
+***
+
+```{r, out.width = "1200px", echo = FALSE}
 knitr::include_graphics("data-science.png")
 ```
 
@@ -97,17 +99,16 @@ results
 edwSQL()
 =======================================
 
-Use of separate .sql files
-
+Use of separate .sql files written in Toad, etc.
 
  - Removes single-line comments (- -)
  - Concatenates the entire .sql file into a single line
- - Blocked comments not currently supported
- - Common Table Expressions (WITH ... AS...) not supported
+ - Not supported:
+    - Multi-line comment blocks (/\* .... \*/)
+    - Common Table Expressions (WITH ... AS...)
 
 
 
-***
 ### hvc.sql
 
 ```{sql, eval = FALSE}
@@ -133,6 +134,8 @@ Example uses
 =======================================
 
 Demographics, Transfer Orders and ventilator times for specific providers.
+
+Can bring in data from any SQL source and join using `dplyr`.
 
 ```{r, examples, eval = FALSE}
 resource <- "EDWDBProd"
@@ -172,6 +175,12 @@ install_github("rparrish/RPamisc",
 
 ```
 
+
+### Additional Info
+
+http://rparrish.github.io/RPamisc/
+
+
 Future
 ========================================================
 
@@ -192,6 +201,26 @@ vent_times <-
 
 icu_data <- get_icu_data(start_date, end_date, ministries)
 ```
+
+
+New R options at Providence
+========================================================
+
+### R Toolkit (Desktop/Laptop)
+ - RStudio
+ - Git for Windows
+ - Pandoc & MikTek (PDF reports)
+ - Notepad++
+
+### R Studio VHD (for VDI)
+
+***
+### R Studio Server (testing)
+ - accessed via web browser
+ - Shiny Apps
+ - HTML Reports/Notebooks
+ - Scheduled scripts
+
 
 
 
