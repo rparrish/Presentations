@@ -10,15 +10,12 @@ autosize: true
 Data Science approach
 ========================================================
 
-## Importing Data
+## Streamlining data imports
 
- - 80% of effort spent importing and preparing data for analysis
- - ie. monthly exports of data files
- - We can decrease the effort spent on importing data
+ - ~80% of effort is spent on acquiring data for analysis
+ - We can automate using SQL instead of raw data files
 
-***
-![Source: R for Data Science](data-science.png)
-
+<img src="data-science.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="1000px" />
 
 [Source: R for Data Science](http://r4ds.had.co.nz/index.html)
 
@@ -37,7 +34,7 @@ R packages for working with SQL databases
    - `tidyverse`
    - `dplyr`
    - `odbc`
-3. DSN configured in Windows (ie. EDWDBDev)
+3. DSN configured in Windows (ie. "EDWDBDev")
 
 
 odbc
@@ -68,7 +65,7 @@ mydata <- queryResult
 edwSQL()
 ========================================================
 
- - Wrapper function for odbc
+ - Wrapper function for `odbc`
  - Allows more complex SQL queries from .sql files
  - Returns additional metadata (status message , field names, time)
 
@@ -116,18 +113,19 @@ Use of separate .sql files
 
 
  - Removes single-line comments (- -)
- - Concatenates entire .sql file into a single line
+ - Concatenates the entire .sql file into a single line
  - Blocked comments not currently supported
  - Common Table Expressions (WITH ... AS...) not supported
- 
+
 
 
 ***
+### hvc.sql
 
 
 ```sql
 -- Example query
-SELECT 
+SELECT
 TOP 3
 
   PAT_ENC_CSN_ID
@@ -151,13 +149,14 @@ Demographics, Transfer Orders and ventilator times for specific providers.
 
 
 ```r
+resource <- "EDWDBProd"
 discharge_BASE <- edwSQL("SQL/discharges.sql", resource = resource)
 trf_orders     <- edwSQL("SQL/transfer_orders.sql", resource = resource)
 vent_times     <- edwSQL("SQL/vent_times.sql", resource = resource)
 tig_cases      <- edwSQL("SQL/tig_cases.sql", resource = resource)
 
-icu_data <- 
-    discharge_BASE %>% 
+icu_data <-
+    discharge_BASE %>%
     inner_join(trf_orders, by = "PAT_ENC_CSN_ID") %>%
     left_join(vent_times, by = "PAT_ENC_CSN_ID") %>%
     semi_join(tig_cases, by = "PAT_ENC_CSN_ID")
@@ -191,7 +190,9 @@ Future
 ### Parameterized queries
 
 ```r
-vent_times <- 
+ministries <- c("WSH", "WFH")
+
+vent_times <-
     template_query("vent_times",
                    params = list(start_date   = "2017-04-01",
                                  end_date     = "2017-04-30",
@@ -211,16 +212,12 @@ Discussion
 ========================================================
 
 - [_] Communication
-    - R User community
-    - WellsSpot, Slack, etc.
+    - R User community, WellSpot, Slack, etc.
 - [_] Training Resources
     - Data Camp, Coursera
-   
-*** 
-
 - [X] Internal Git Repositories
-    - GitLab - []() development server https://u90166.providence.org
+    - GitLab Server - []() development https://u90166.providence.org
 - [X] R packages
     - cupid - SQL queries for Clinical Data Analysts
-    - templates - Rmarkdown templates (reports, Poster presentations)
+    - templates - Rmarkdown templates for reports, poster presentations, plot themes, etc.
 
