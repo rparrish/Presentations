@@ -13,9 +13,8 @@ Data Science approach
 ## Streamlining data imports
 
  - ~80% of effort is spent on acquiring data for analysis
- - We can automate using SQL instead of raw data files
+ - Import using SQL queries instead of manual data extracts
 
-***
 
 ```{r, out.width = "1200px", echo = FALSE}
 knitr::include_graphics("data-science.png")
@@ -29,7 +28,7 @@ R packages for working with SQL databases
 ========================================================
 
 - `RODBC`
-- `odbc` DBI-compliant, 5x faster
+- `odbc` 5x faster
 
 
 ## Requirements
@@ -38,7 +37,10 @@ R packages for working with SQL databases
    - `tidyverse`
    - `dplyr`
    - `odbc`
-3. DSN configured in Windows (ie. "EDWDBDev")
+3. Some expertise with SQL
+   - Database access
+   - DSN data source configured in Windows (ie. "EDWDBDev")
+   - SQL software (TOAD, SSMS, etc.)
 
 
 odbc
@@ -207,33 +209,18 @@ New R options at Providence
 ========================================================
 
 ### R Toolkit (Desktop/Laptop)
- - RStudio
- - Git for Windows
- - Pandoc & MikTek (PDF reports)
- - Notepad++
+ - R & RStudio
+ - Git for Windows (version control)
+ - Pandoc & MikTek (producing PDF reports)
+ - Notepad++ (text editor)
 
-### R Studio VHD (for VDI)
+### R Studio VHD (VDI users)
 
 ***
 ### R Studio Server (testing)
- - accessed via web browser
+ - Accessible via web browser
  - Shiny Apps
  - HTML Reports/Notebooks
- - Scheduled scripts
+ - Scheduled R scripts
 
-
-
-
-Discussion
-========================================================
-
-- [_] Communication
-    - R User community, WellSpot, Slack, etc.
-- [_] Training Resources
-    - Data Camp, Coursera
-- [X] Internal Git Repositories
-    - GitLab Server - []() development https://u90166.providence.org
-- [X] R packages
-    - cupid - SQL queries for Clinical Data Analysts
-    - templates - Rmarkdown templates for reports, poster presentations, plot themes, etc.
 
