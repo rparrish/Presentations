@@ -1,0 +1,18 @@
+
+-- Example query
+
+SELECT TOP 10
+
+PAT_MRN_ID as MRN
+, PAT_ENC_CSN_ID
+, PAT_BASE_CLASS as Pt_class
+, ADMITDATE as Admit_dts
+, DISCHARGEDATE as Disch_dts
+, LEFT(HSP_LOC_NAME, 3) as Ministry
+
+FROM StgEpicClarityPHS.dbo.HOSP_VISITS_CST
+
+WHERE 1=1
+  AND LEFT(HSP_LOC_NAME, 3) = 'WSH'
+  AND DISCHARGEDATE
+    BETWEEN '2017-04-01' AND '2017-04-03'
