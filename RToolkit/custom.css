@@ -1,0 +1,50 @@
+
+.title-slide hgroup h2 {
+        color: #515151;
+}
+
+p, li {
+    color: rgb(0,0,255);
+}
+/* http://stackoverflow.com/questions/25869429/custom-table-with-r-markdown-v2-and-ioslides */
+
+table,
+.table-condensed,
+table.rmdtable {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+table,
+.table-condensed,
+table.rmdtable,
+table.rmdtable .header th,
+.table > thead > tr > th {
+  color: black;
+  border-collapse: collapse;
+  border-style: solid;
+  border-spacing: 0;
+  border-width: medium 0 medium 0;
+  border-color: black
+}
+table.rmdtable th,
+table.rmdtable td,
+table th,
+table.rmdtable tr > td:first-child,
+table.rmdtable .even {
+  font-size: 100%;
+  padding: 0.4em 0..25em;
+  color: black;
+  background: #FFF;
+  font-weight: normal;
+}
+.table > tbody > tr > td {
+  border-width: 0;
+}
+
+
+table.rmdtable td, table th {
+   font-size: 30px;
+   padding: .5em .25em;
+   color: black;
+}
