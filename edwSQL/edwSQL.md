@@ -1,7 +1,7 @@
 edwSQL()
 ========================================================
 author: Rollie Parrish
-date: 2017-04-29
+date: 2017-04-26
 autosize: true
 
 ## Bringing SQL Server data into R
@@ -25,8 +25,8 @@ Data Science approach
 R packages for working with SQL databases
 ========================================================
 
-- `RODBC`
-- `odbc` 5x faster
+- `RODBC` legacy package
+- `odbc` is ~5x faster
 
 
 ## Requirements
@@ -83,6 +83,20 @@ results <- edwSQL("SQL/hvc.sql",  resource = "EDWDBDev")
 mydata <- results$data
 ```
 
+### hvc.sql
+
+
+```sql
+-- Example query
+SELECT TOP 3
+  PAT_ENC_CSN_ID
+, ADMITDATE as Admit_dts
+, LEFT(HSP_LOC_NAME, 3) as Ministry
+FROM StgEpicClarityPHS.dbo.HOSP_VISITS_CST
+WHERE LEFT(HSP_LOC_NAME, 3) = 'WSH'
+  AND DISCHARGEDATE BETWEEN '2017-04-01' AND '2017-04-03'
+```
+
 edwSQL()
 ===========================================
 
@@ -122,26 +136,6 @@ Use of separate .sql files written in Toad, etc.
     - Common Table Expressions (WITH ... AS...)
 
 
-
-### hvc.sql
-
-
-```sql
--- Example query
-SELECT
-TOP 3
-
-  PAT_ENC_CSN_ID
-, ADMITDATE as Admit_dts
-, LEFT(HSP_LOC_NAME, 3) as Ministry
-
-FROM StgEpicClarityPHS.dbo.HOSP_VISITS_CST
-
-WHERE 1=1
-  AND LEFT(HSP_LOC_NAME, 3) = 'WSH'
-  AND DISCHARGEDATE
-    BETWEEN '2017-04-01' AND '2017-04-03'
-```
 
 
 
