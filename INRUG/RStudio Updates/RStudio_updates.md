@@ -51,11 +51,11 @@ Tools --> Global Options --> Code --> Completion
 ## read and write data files
 # source: data.seattle.gov
 
-seattle_911 <- read.csv("Seattle_911.csv", )
+seattle_911 <- read.csv("Seattle_911.csv")
 
-write(seattle_911, file = "sea_911.rda", )
+write(seattle_911, file = "sea_911.rda", row
 
-write.csv(mtcars, file = "sea_copy.csv",)
+write.csv(mtcars, file = "sea_copy.csv", row.names = FALSE)
 ```
 
 
