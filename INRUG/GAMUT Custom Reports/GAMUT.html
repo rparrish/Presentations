@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="author" content="Rollie Parrish, RN, BSN" />
     <meta name="date" content="2017-11-03" />
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -29,35 +28,28 @@ class: center, middle, inverse, title-slide
 1. Producing multiple Static Reports (Rmarkdown)
 
 ---
+
 # Healthcare Quality
 
-Hospital Compare
-
-Quality Metrics (NQF)
-
+&lt;img src="hospital_compare.jpg" width="75%" style="display: block; margin: auto;" /&gt;
 
 ---
-# Air Medical
+# Air Medical Transport
+source: adamsairmed.org
 
-ADAM map
-
+&lt;img src="adams.jpg" width="75%" style="display: block; margin: auto;" /&gt;
 
 ---
 # GAMUT QI Collaborative
 
-Ground &amp; Air Medical qUality in Transport
-
-Logo
-
----
-
-# Denver 2014
+### July 2014
 
 - 80 participants (industry leaders)
 - 2 day workshop 
 - Sponsored by AMPA (Air Medical Physician Association)
 - 30 metrics by consensus (Delphi method)
 
+&lt;img src="gamut_logo.png" width="75%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -73,7 +65,7 @@ A simple, inexpensive, secure and scaleable method to:
 1. Publish reports 
   -   
 1. Distribution
-  - 
+  -   
 1. Dynamic Dashboard
   -  
 ]
@@ -163,7 +155,9 @@ kable(carrier_table)
 
 
 ```
+## # A tibble: 4 x 2
 ##   carrier                   name
+##     &lt;chr&gt;                  &lt;chr&gt;
 ## 1      9E      Endeavor Air Inc.
 ## 2      AA American Airlines Inc.
 ## 3      AS   Alaska Airlines Inc.
@@ -200,15 +194,8 @@ Slides created via the R package [**xaringan**](https://github.com/yihui/xaringa
 "highlightLines": true,
 "countIncrementalSlides": false
 });
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})();</script>
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});
+(function() {var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler"); if (!r) return; s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }"; d.head.appendChild(s);})();</script>
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
