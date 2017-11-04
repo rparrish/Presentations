@@ -1,0 +1,187 @@
+---
+title: "Automating custom reports using R"
+subtitle: "GAMUT QI Collaborative"
+author: "Rollie Parrish, RN, BSN"
+date: "2017-11-03"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+#options(htmltools.dir.version = FALSE)
+```
+
+
+# Objectives
+
+1. Background (Healthcare Quality, Air Medical Transport, & GAMUT)
+1. Producing multiple Static Reports (Rmarkdown)
+
+---
+# Healthcare Quality
+
+Hospital Compare
+
+Quality Metrics (NQF)
+
+
+---
+# Air Medical
+
+ADAM map
+
+
+---
+# GAMUT QI Collaborative
+
+Ground & Air Medical qUality in Transport
+
+Logo
+
+---
+
+# Denver 2014
+
+- 80 participants (industry leaders)
+- 2 day workshop 
+- Sponsored by AMPA (Air Medical Physician Association)
+- 30 metrics by consensus (Delphi method)
+
+
+---
+
+# The Challenge
+
+.pull-left[
+A simple, inexpensive, secure and scaleable method to: 
+
+1. Collect & manage the raw data 
+  -  
+1. Analysis 
+  -  
+1. Publish reports 
+  -   
+1. Distribution
+  - 
+1. Dynamic Dashboard
+  -  
+]
+---
+
+# The Challenge
+
+.pull-left[
+A simple, inexpensive, secure and scaleable method to: 
+
+1. Collect & manage the raw data 
+  - REDCap
+1. Analysis 
+  - R
+1. Publish reports 
+  - R Markdown
+1. Distribution 
+  - R & REDCap
+1. Dynamic dashboard 
+  - Shiny
+]
+
+.pull-right[
+![](report_cover.jpg)
+
+]
+
+---
+
+# Reports 
+
+![](enrollment.png)
+
+
+---
+
+# Reports
+
+![](example_bench.png)
+
+---
+
+# Reports
+
+.pull-left[
+![](example_bench_dag.png)
+]
+
+
+.pull-right[
+![](example_runchart.png)
+]
+
+
+---
+class: inverse, middle, center
+
+# How it's done
+
+
+---
+
+# Start with  a parameterized Rmarkdown report
+
+```r  
+---
+output: html_document
+params: 
+  carrier: "AA" 
+title: "Departure Delay Report for 'r params$carrier'"
+---
+
+{r, results = 'asis', echo = FALSE}
+source("load_data.R")
+
+carrier_median_delay %>%
+    glue_data("At {origin}, 
+    the median departure delay for {params$carrier} was 
+    {median_dep_delay} minutes.</BR>")
+ 
+kable(carrier_table)
+```
+
+---
+
+# Driver script
+
+```{r, echo = FALSE}
+head(nycflights13::airlines,4)
+
+```
+
+```{r, eval = FALSE, echo = TRUE}
+#' driver.R
+
+data("airlines")
+
+for(i in airlines$carrier) {
+    rmarkdown::render("example.Rmd",
+                      {{params = list(carrier = i),}}
+                      output_dir = "reports",
+                      output_file = paste0(i, "_report.html")
+                      )
+}
+
+```
+
+
+---
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
