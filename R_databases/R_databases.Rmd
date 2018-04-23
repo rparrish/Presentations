@@ -1,0 +1,40 @@
+---
+title: "R and Databases"
+subtitle: "Getting data into R"
+author: "Rollie Parrish"
+date: "April 23, 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Overview
+
+
+![The data science process](data-science.png)
+
+> 80% of the effort is spent on acquiring, formatting and cleaning data 
+> and 20% is on actual analysis.
+ 
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
