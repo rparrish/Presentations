@@ -79,14 +79,8 @@ dbDisconnect(con)
 ```
 
 ## Simple example (results)
-
-```{r, echo = TRUE, eval = FALSE, comment = "", message = FALSE}
-hvc 
-
-```
-```{r, comment = "", message = FALSE}
-library(dplyr)
-head(hvc_simple, n=3) %>% select(PAT_ID:PREV_ANY_DISCHARGE)
+```{r}
+head(hvc_simple, n=3)
 
 ```
 
@@ -115,25 +109,10 @@ dbDisconnect(con)
 ```
 
 
-## Reading in .sql files (results)
 
-```{r, echo = TRUE, eval = FALSE, comment = "", message = FALSE}
-hvc 
-
-```
-
-```{r, comment = ""}
+## Simple example (results)
+```{r}
 head(hvc, n=3)
-
-```
-
-```{r, echo = TRUE, eval = FALSE, comment = "", message = FALSE}
-a1c 
-
-```
-
-```{r, comment = ""}
-head(a1c, n=3)
 
 ```
 
@@ -158,21 +137,22 @@ mydata
 
 ## dplyr (remote on EDW)
 
-Calculations done on database server BEFORE loading in R
+Computations done with the database engine
 
 ```{r, echo = TRUE, eval = FALSE}
-con <- DBI::dbConnect(odbc::odbc(), "StgEpicClarityPHS", 
-        uid = Sys.getenv("DBUSERNAME"), 
-        pwd = Sys.getenv("DBPASSWORD"))
+con <- DBI::dbConnect(odbc::odbc(), "StgEpicClarityPHS", uid = Sys.getenv("DBUSERNAME"), 
+    pwd = Sys.getenv("DBPASSWORD"))
+
 # set up tibble
 hvc_tbl <- tbl(con, "HOSP_VISITS_CST")
+
 # top 5 ED to inpatient admissions by Hospital Service
 hvc_tbl %>%
         filter(FLAG == "ED TO INPATIENT") %>%
         filter(HSP_LOC_NAME == "WSH SACRED HEART MEDICAL CENTER") %>%
         group_by(HOSP_SERV) %>%
         count(sort = TRUE) %>%
-        head(n = 5) 
+        head(n = 5) %>%
 
 dbDisconnect(con)
 ```
@@ -190,6 +170,7 @@ con <- src_impala(drv = odbc::odbc(), dsn = "ImpalaDev")
 
 # define the Encounter tibble
 enc_tbl <- tbl(con, in_schema("dpa", "output_enc"))
+
 
 enc_tbl %>%
         select(instance, ministry_acronym, disch_date_time) %>%
