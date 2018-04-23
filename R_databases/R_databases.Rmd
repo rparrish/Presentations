@@ -10,11 +10,7 @@ output: ioslides_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
 
 ## Overview
 
@@ -25,16 +21,187 @@ When you click the **Knit** button a document will be generated that includes bo
 > and 20% is on actual analysis.
  
 
+## Basic Process
 
-## Slide with R Output
+- Connect to database
+- Send request(s)
+- close connection
 
-```{r cars, echo = TRUE}
-summary(cars)
+```{r, echo = FALSE, message = FALSE, cache=TRUE}
+library(odbc)
+library(DBI)
+library(dplyr)
+library(odbc)
+library(readr)
+library(tictoc)
+
+con <- DBI::dbConnect(odbc::odbc(), "StgEpicClarityPHS", uid = Sys.getenv("DBUSERNAME"), 
+    pwd = Sys.getenv("DBPASSWORD"))
+
+# simple command
+sql_simple <-  "
+SELECT TOP 10 * FROM StgEpicClarityPHS.dbo.HOSP_VISITS_CST WHERE ADMITDATE IS NOT NULL"
+
+# load from .sql file        
+#tic("loading hvc")
+hvc_sql <- read_file("hvc.sql")
+hvc <- dbGetQuery(con, hvc_sql) 
+#toc()
+
+#tic("loading a1c")
+a1c_sql <- read_file("a1c.sql")
+a1c <- dbGetQuery(con, a1c_sql) 
+#toc()
+
+#tic("loading simple")
+hvc_simple <- dbGetQuery(con, sql_simple) %>% select(-PAT_NAME)
+#toc()
+
+dbDisconnect(con)
 ```
 
-## Slide with Plot
+## Simple example
+```{r, eval = FALSE, echo = TRUE}
+# Connect to DSN
+con <- DBI::dbConnect(odbc(), 
+                "StgEpicClarityPHS")
 
-```{r pressure}
-plot(pressure)
+# load from .sql file        
+sql_command <-  "SELECT TOP 10 * FROM HOSP_VISITS_CST"
+       
+# create the HVC data.frame 
+hvc <- dbGetQuery(con, sql_command)
+
+# close the connection
+dbDisconnect(con)
+
+
 ```
+
+## Simple example (results)
+
+```{r, echo = TRUE, eval = FALSE, comment = "", message = FALSE}
+hvc 
+
+```
+```{r, comment = "", message = FALSE}
+library(dplyr)
+head(hvc_simple, n=3) %>% select(PAT_ID:PREV_ANY_DISCHARGE)
+
+```
+
+
+## Reading in .sql files
+
+```{r, eval = FALSE, echo = TRUE}
+# Connect to DSN
+con <- DBI::dbConnect(odbc(), 
+                "StgEpicClarityPHS")
+
+# load from .sql file        
+hvc_sql <- read_file("hvc.sql")
+a1c_sql <- read_file("a1c.sql")
+       
+# create the HVC and A1C data.frame 
+hvc <- dbGetQuery(con, hvc_sql)
+# loading hvc: 1.165 sec elapsed
+
+a1c <- dbGetQuery(con, a1c_sql) 
+# loading a1c: 133.913 sec elapsed
+
+# close the connection
+dbDisconnect(con)
+
+```
+
+
+## Reading in .sql files (results)
+
+```{r, echo = TRUE, eval = FALSE, comment = "", message = FALSE}
+hvc 
+
+```
+
+```{r, comment = ""}
+head(hvc, n=3)
+
+```
+
+```{r, echo = TRUE, eval = FALSE, comment = "", message = FALSE}
+a1c 
+
+```
+
+```{r, comment = ""}
+head(a1c, n=3)
+
+```
+
+
+## dplyr
+
+```{r cars, echo = TRUE, message = FALSE}
+library(dplyr)
+mydata <- 
+        hvc %>%
+        left_join(a1c) %>%
+        select(PAT_MRN_ID, ADMIT_DATE, HOSP_SERV, A1C = ORD_VALUE) %>%
+        filter(!is.na(A1C)) %>%
+        head(n = 5)
+
+mydata
+
+```
+
+
+
+
+## dplyr (remote on EDW)
+
+Calculations done on database server BEFORE loading in R
+
+```{r, echo = TRUE, eval = FALSE}
+con <- DBI::dbConnect(odbc::odbc(), "StgEpicClarityPHS", 
+        uid = Sys.getenv("DBUSERNAME"), 
+        pwd = Sys.getenv("DBPASSWORD"))
+# set up tibble
+hvc_tbl <- tbl(con, "HOSP_VISITS_CST")
+# top 5 ED to inpatient admissions by Hospital Service
+hvc_tbl %>%
+        filter(FLAG == "ED TO INPATIENT") %>%
+        filter(HSP_LOC_NAME == "WSH SACRED HEART MEDICAL CENTER") %>%
+        group_by(HOSP_SERV) %>%
+        count(sort = TRUE) %>%
+        head(n = 5) 
+
+dbDisconnect(con)
+```
+
+
+
+## dplyr (remote on Data Lake)
+
+
+```{r, echo = TRUE, eval = FALSE}
+library(implyr)
+
+# open the connection 
+con <- src_impala(drv = odbc::odbc(), dsn = "ImpalaDev")
+
+# define the Encounter tibble
+enc_tbl <- tbl(con, in_schema("dpa", "output_enc"))
+
+enc_tbl %>%
+        select(instance, ministry_acronym, disch_date_time) %>%
+        group_by(ministry_acronym) %>%
+        summarise(n = n(), 
+                min_date = min(disch_date_time, na.rm = TRUE), 
+                max_date = max(disch_date_time, na.rm = TRUE)) %>%
+        arrange(desc(n)) %>%
+        head(n = 5) 
+
+
+```
+
+
 
