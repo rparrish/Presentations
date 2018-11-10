@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clinical Analytics</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Rollie Parrish, RN, BSN" />
+    <meta name="date" content="2018-11-09" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Clinical Analytics
+## From Data to Information: getting started
+### Rollie Parrish, RN, BSN
+### 2018-11-09
+
+---
+
+
+
+
+
+### Introduction
+- Manager Quality &amp; Analytics - PHC
+- RN (ICU, ED and Transport)
+- Computer enthusiast (programming/webmaster/data science)
+
+
+
+???
+about me test
+
+---
+
+# We're going to talk about...
+
+- An approach to analytics
+- Terminology
+- Starting with the right questions
+- Epic Data sources
+- Importance of visualizing data
+- A few practical tips for getting started
+
+
+
+
+---
+background-image: url("Sentara Health Campus.jpg")
+background-size: cover
+class: center, bottom, inverse
+
+
+
+???
+Looks like a maze but it's not
+
+Prayer, medidation * mindfullness
+
+State your intention before entering: 
+- anything that is troubling you
+- "I want a solution to my problem with..."
+
+---
+
+# The Maze and the Labyrinth
+
+
+.pull-left[
+![](768px-Prim_Maze.svg.png)&lt;!-- --&gt;
+
+]
+
+.pull-right[
+
+### Maze
+1. Goal is to reach the destination
+
+1. Multiple entrances, exits, and dead-ends.
+
+1. Difficult to recall/reproduce the route
+
+]
+
+
+
+---
+
+# The Maze and the Labyrinth
+
+
+.pull-left[
+![](768px-Labyrinthus.svg.png)&lt;!-- --&gt;
+
+]
+
+.pull-right[
+
+### Labyrinth
+1. Goal is to find peace and understanding
+
+1. Single route to the center and back to entrance
+
+1. Can easily reproduce how we got there
+
+]
+
+---
+
+## Terminology 
+
+.pull-left[
+
+#### Report
+- Tabular data
+- Excel files, on-screen or printed
+- Reporting Workbench/InfoView
+
+#### Dashboard
+- Multiple graphs or plots
+- Interactive or static
+- Tableau/Vantage/etc.
+
+
+]
+
+--
+
+.pull-right[
+#### Raw Data
+- No formatting or plots
+- Intended for computers
+- Excel or .csv format
+
+]
+
+
+---
+
+## Terminology 
+
+.pull-left[
+#### Clinical Analytics
+- planning/data collection
+- cleaning/preparation
+- analysis
+- data presentation
+
+]
+
+--
+
+.pull-right[
+
+#### Data Science
+- a formal discipline of turning raw data into understanding, insight, and knowledge. 
+- Programming tools instead of GUI software
+- Computer science &amp; statistics
+]
+
+
+--
+
+#### The Data Science process
+&lt;img src="data-science.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## What types of Analytics requests are you getting?
+
+--
+- "I need a report..."
+- "Can we 'tweak' this dashboard to ..." 
+- "Can you pull a list of patients ..."
+- "I just need a ..."
+
+
+--
+
+   &gt; What they __request__  
+   &gt; is not always what they __want__  
+   &gt; which may not be what they __need__
+  
+---
+## Restate the issue
+
+- "What question(s) are you trying to answer?"
+- "What problem are you trying to solve?"
+
+--
+- 5 Whys
+
+--
+- User Stories
+
+&gt; "As a `&lt;type of user&gt;`,  
+&gt; I want `&lt;some goal&gt;`   
+&gt; so that I can `&lt;some action&gt;`."  
+
+
+---
+## Restate the issue
+
+### PICOT
+   - Population
+   - Intervention
+   - Comparison
+   - Outcome
+   - Time
+
+
+
+
+
+
+&gt; Among patients with ICD implants, did the use of antibiotic pouches decrease the incidence of infection compared to patients without pouches over the past 5 years?
+
+
+---
+## Restating the issue
+
+### Clinical Analysis
+ - What is being requested? Purpose or use? 
+ - Population of interest - Inclusions &amp; Exclusions 
+ - Intervention or comparision groups?
+ - Outcomes/Variables?
+ - Date Ranges? 
+
+---
+
+# Data requirements
+
+- What raw data is required?
+- What level of detail? 
+   - individual patients
+   - procedures
+- What are the potential data sources?
+- Do multiple datasets need be merged?
+- Any modifications? (cleaning or reshaping)
+
+--
+
+.pull-left[
+#### Long data
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CSN &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; MEAS_NAME &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1234 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; BP &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 118/80 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1234 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pulse &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 80 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1234 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Resp &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5678 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; BP &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 142/90 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5678 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pulse &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 65 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5678 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Resp &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+--
+
+.pull-right[
+#### Wide data
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CSN &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; BP &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Pulse &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Resp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; SBP &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1234 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 118/80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 118 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5678 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 142/90 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 65 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 142 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+
+
+---
+
+background-image: url("Analytics_environment.svg")
+background-size: contain
+class: center, top, inverse
+
+### Epic Data Sources
+
+---
+# Data Sources 
+
+
+.pull-left[
+## Chronicles
+- Column-store database
+- Cache (multiple servers)
+- Updated: Real-time
+- Suited for single patient data and short time-frames
+- Access via Reporting Workbench
+
+#### Food metaphor ---&gt; U-pick farm
+]
+
+.pull-right[
+&lt;img src="Analytics_env_chronicles.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Data Sources 
+
+.pull-left[
+## Clarity
+
+- Traditional relational database
+- Oracle (single server)
+- Thousands of tables
+- Epic data only
+- Updated: Nightly
+- Access via InfoView and Hyperspace (Crystal Reports)
+
+#### Farmer's market (rural setting)
+]
+
+.pull-right[
+&lt;img src="Analytics_env_clarity.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Data Sources
+
+.pull-left[
+## Enterprise Data Warehouse (EDW)
+
+- Relational database
+- Microsoft SQL Server (single server) 
+- Copy of Clarity (most tables)
+- Updated: Nightly
+- Multiple data sources, not just Epic
+- Access via Tableau &amp; programming tools (SQL)
+
+#### Farmer's market (urban setting)
+]
+
+.pull-right[
+&lt;img src="Analytics_env_edw.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Data Sources
+
+.pull-left[
+## Data Lake (EDL)
+
+- Data is distributed across a cluster of multiple servers 
+- "Schema-on-read"
+- Updated: Weekly and Monthly
+- Synergy - standardized data from Epic and Meditech
+- Access via programming tools (SQL, R, Scala, etc.)
+
+#### Grocery Store
+]
+
+.pull-right[
+&lt;img src="Analytics_env_edl.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Data Sources
+
+.pull-left[
+## HANA
+
+- Data is loaded in RAM rather than disk
+- Curated (limited) datasets
+- Updated: Monthly
+- Access via Webi &amp; Tableau
+
+#### Blue Apron (meal delivery)
+]
+
+.pull-right[
+&lt;img src="Analytics_env_hana.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+---
+
+# Visualization
+
+Time intervals for STEMI patients admitted to the Emergency Department.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; admit_dt &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; arrival_mode &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d2cl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; cl2b &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d2b &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3556 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-10-31 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EMS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 49 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3554 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-10-29 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EMS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3555 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-10-29 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Walkin &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 60 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3543 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-10-23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EMS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3542 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-10-20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Walkin &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 46 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3528 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-10-09 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EMS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+__d2cl__: Door to Cath Lab (ED arrival)  
+__cl2b__: Cath Lab to Balloon (definitive treatment)  
+__d2b__: Door to Balloon (overall elapsed time)  
+
+
+---
+
+# Visualization
+
+### Histograms
+
+&lt;img src="hist_one.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Visualization
+
+### Histograms
+
+&lt;img src="hist_two.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Visualization
+
+### Dot plots
+
+&lt;img src="dot_one.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Visualization
+
+### Run charts
+
+
+&lt;img src="qic_one.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Some Tips
+
+
+.pull-left[
+
+Organize analytics projects in a __standard file structure__
+
+- Always keep an unmodified version of the original raw data
+- `Reports:` contains the final analysis
+- `Resources:` Reference documents, articles, etc.
+- `SQL/R/Tableau:` Any programming code used in project
+- README document contains information about the project intent, etc.
+
+]
+
+.pull-right[
+&lt;img src="project_folders.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Some Tips
+
+Raw data files should be __tidy__.
+- Each table is an observational unit (ie. patient vs. procedure)
+- Each row is a single observation
+- Each column is a single variable
+
+.pull-left[
+
+&lt;table&gt;
+&lt;caption&gt;messy data&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CSN &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Age/sex &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Diagnosis/Admit_date &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 123 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 72 F &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Acute MI &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-07-04 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 456 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 68 M &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Stroke &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-08-01 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+
+&lt;table&gt;
+&lt;caption&gt;tidy data&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CSN &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Diagnosis &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Admit_date &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 123 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 72 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Acute MI &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-07-04 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 456 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 68 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Stroke &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-08-01 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+] 
+
+---
+
+
+# Some Tips
+
+Data from different sources can be __joined__ using identifier fields (ie. MRN, HAR, CSN)
+
+.pull-left[
+_Demographics_
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CSN &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Diagnosis &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Admit_date &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1234 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Acute MI &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-07-04 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5678 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Stroke &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-08-01 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right[
+_Vitals_
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CSN &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; BP &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Pulse &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Resp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; SBP &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1234 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 118/80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 118 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5678 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 142/90 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 65 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 142 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CSN &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Diagnosis &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Admit_date &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; BP &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Pulse &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Resp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; SBP &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1234 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Acute MI &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-07-04 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 118/80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 118 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5678 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Stroke &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2018-08-01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 142/90 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 65 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 142 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+This means that you aren't limited to using a single data source or reporting system.
+
+
+---
+
+# Wrap up
+
+
+1. Start with good questions 
+1. May need multiple data sources
+1. May need to prep the data for analysis 
+1. Visualizations can help find patterns
+
+
+
+---
+background-image: url("pmp_labyrinth.png")
+background-size: cover
+class: center, bottom, inverse
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(60000);</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
