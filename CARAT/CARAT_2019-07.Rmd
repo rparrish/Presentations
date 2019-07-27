@@ -1,0 +1,220 @@
+---
+title: "Development Strategy & Data Products"
+subtitle: "PHC Quality & Analytics"
+author: "Rollie Parrish, RN, BSN"
+date: "2019-07-29"
+output:
+  xaringan::moon_reader:
+    #css: [default, metropolis, metropolis-fonts]
+    css: [default, rladies, rladies-fonts]
+    chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      countdown: 60000
+---
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(dplyr)
+options(htmltools.dir.version = FALSE)
+```
+
+
+# Hopefully we have enough time to talk about...
+
+## Development Strategy
+- Reproducible Analytics
+- Clinical Data Science
+- "Inner Source" 
+- Education & skillset development 
+
+## Data Products
+- TAVR: device comparison
+- GWTG-CAD: import data file
+- REDCap: notification module
+
+---
+
+# Development Strategy
+
+## Reproducible Analytics/Research
+
+- Analytics and Research is "reproducible" when you and others can get the exact same results using the same data. 
+- "High Reliability Analytics"
+- Best achieved using programming code as opposed to Excel and "point and click" GUI software
+
+
+Article - [Spreadsheets are slowing our progress](https://towardsdatascience.com/spreadsheets-are-slowing-our-progress-caa1f7709302) - Keith McNulty - March 7, 2019 
+
+---
+
+# Development Strategy
+
+## Data Science 
+
+> 
+> 
+> Wickham & Garrett (2017) <sup>1</sup>
+
+## Clinical Data Science
+
+- What is Clinical Data Science?
+
+
+--
+- Types of Data Science
+
+
+
+--
+.footnote[
+
+[1] footnote
+
+]
+---
+
+# The Maze and the Labyrinth
+
+
+.pull-left[
+```{r, echo = FALSE}
+knitr::include_graphics("768px-Prim_Maze.svg.png")
+
+```
+
+]
+
+.pull-right[
+
+### Maze
+1. Goal is to reach the destination
+
+1. Multiple entrances, exits, and dead-ends.
+
+1. Difficult to recall/reproduce the route
+
+]
+
+
+
+---
+
+# The Maze and the Labyrinth
+
+
+.pull-left[
+```{r, echo = FALSE}
+knitr::include_graphics("768px-Labyrinthus.svg.png")
+
+```
+
+]
+
+.pull-right[
+
+### Labyrinth
+1. Goal is to find peace and understanding
+
+1. Single route to the center and back to entrance
+
+1. Can easily reproduce how we got there
+
+]
+
+
+---
+
+## Terminology 
+
+.pull-left[
+#### Clinical Analytics
+- planning/data collection
+- cleaning/preparation
+- analysis
+- data presentation
+
+]
+
+--
+
+.pull-right[
+
+#### Data Science
+- a formal discipline of turning raw data into understanding, insight, and knowledge. 
+- Programming tools instead of GUI software
+- Computer science & statistics
+]
+
+
+--
+
+#### The Data Science process
+```{r, echo = FALSE, fig.align = 'center'}
+knitr::include_graphics("data-science.png")
+
+```
+
+
+---
+## Restating the issue
+
+### Clinical Analysis
+ - What is being requested? Purpose or use? 
+ - Population of interest - Inclusions & Exclusions 
+ - Intervention or comparision groups?
+ - Outcomes/Variables?
+ - Date Ranges? 
+
+---
+
+# Data requirements
+
+- What raw data is required?
+- What level of detail? 
+   - individual patients
+   - procedures
+- What are the potential data sources?
+- Do multiple datasets need be merged?
+- Any modifications? (cleaning or reshaping)
+
+
+
+---
+
+# Some Tips
+
+
+.pull-left[
+
+Organize analytics projects in a __standard file structure__
+
+- Always keep an unmodified version of the original raw data
+- `Reports:` contains the final analysis
+- `Resources:` Reference documents, articles, etc.
+- `SQL/R/Tableau:` Any programming code used in project
+- README document contains information about the project intent, etc.
+
+]
+
+.pull-right[
+```{r, echo = FALSE, fig.align = 'center'}
+knitr::include_graphics("project_folders.png")
+
+```
+
+]
+
+
+
+---
+background-image: url("pmp_labyrinth.png")
+background-size: cover
+class: center, bottom, inverse
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+

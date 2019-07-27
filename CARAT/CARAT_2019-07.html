@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Development Strategy &amp; Data Products</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Rollie Parrish, RN, BSN" />
+    <meta name="date" content="2019-07-29" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Development Strategy &amp; Data Products
+## PHC Quality &amp; Analytics
+### Rollie Parrish, RN, BSN
+### 2019-07-29
+
+---
+
+
+
+
+
+# Hopefully we have enough time to talk about...
+
+## Development Strategy
+- Reproducible Analytics
+- Clinical Data Science
+- "Inner Source" 
+- Education &amp; skillset development 
+
+## Data Products
+- TAVR: device comparison
+- GWTG-CAD: import data file
+- REDCap: notification module
+
+---
+
+# Development Strategy
+
+## Reproducible Analytics/Research
+
+- Analytics and Research is "reproducible" when you and others can get the exact same results using the same data. 
+- "High Reliability Analytics"
+- Best achieved using programming code as opposed to Excel and "point and click" GUI software
+
+
+Article - [Spreadsheets are slowing our progress](https://towardsdatascience.com/spreadsheets-are-slowing-our-progress-caa1f7709302) - Keith McNulty - March 7, 2019 
+
+---
+
+# Development Strategy
+
+## Data Science 
+
+&gt; 
+&gt; 
+&gt; Wickham &amp; Garrett (2017) &lt;sup&gt;1&lt;/sup&gt;
+
+## Clinical Data Science
+
+- What is Clinical Data Science?
+
+
+
+- Types of Data Science
+
+.footnote[
+[1]: footnote
+
+]
+---
+
+# The Maze and the Labyrinth
+
+
+.pull-left[
+![](768px-Prim_Maze.svg.png)&lt;!-- --&gt;
+
+]
+
+.pull-right[
+
+### Maze
+1. Goal is to reach the destination
+
+1. Multiple entrances, exits, and dead-ends.
+
+1. Difficult to recall/reproduce the route
+
+]
+
+
+
+---
+
+# The Maze and the Labyrinth
+
+
+.pull-left[
+![](768px-Labyrinthus.svg.png)&lt;!-- --&gt;
+
+]
+
+.pull-right[
+
+### Labyrinth
+1. Goal is to find peace and understanding
+
+1. Single route to the center and back to entrance
+
+1. Can easily reproduce how we got there
+
+]
+
+
+---
+
+## Terminology 
+
+.pull-left[
+#### Clinical Analytics
+- planning/data collection
+- cleaning/preparation
+- analysis
+- data presentation
+
+]
+
+--
+
+.pull-right[
+
+#### Data Science
+- a formal discipline of turning raw data into understanding, insight, and knowledge. 
+- Programming tools instead of GUI software
+- Computer science &amp; statistics
+]
+
+
+--
+
+#### The Data Science process
+&lt;img src="data-science.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+## Restating the issue
+
+### Clinical Analysis
+ - What is being requested? Purpose or use? 
+ - Population of interest - Inclusions &amp; Exclusions 
+ - Intervention or comparision groups?
+ - Outcomes/Variables?
+ - Date Ranges? 
+
+---
+
+# Data requirements
+
+- What raw data is required?
+- What level of detail? 
+   - individual patients
+   - procedures
+- What are the potential data sources?
+- Do multiple datasets need be merged?
+- Any modifications? (cleaning or reshaping)
+
+
+
+---
+
+# Some Tips
+
+
+.pull-left[
+
+Organize analytics projects in a __standard file structure__
+
+- Always keep an unmodified version of the original raw data
+- `Reports:` contains the final analysis
+- `Resources:` Reference documents, articles, etc.
+- `SQL/R/Tableau:` Any programming code used in project
+- README document contains information about the project intent, etc.
+
+]
+
+.pull-right[
+&lt;img src="project_folders.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+---
+background-image: url("pmp_labyrinth.png")
+background-size: cover
+class: center, bottom, inverse
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(60000);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
