@@ -1,0 +1,168 @@
+---
+title: "Development Strategy & Data Products"
+subtitle: "PHC Quality & Analytics"
+author: "Rollie Parrish, RN, BSN"
+date: "2019-07-29"
+output:
+  xaringan::moon_reader:
+    #css: [default, metropolis, metropolis-fonts]
+    css: [default, rladies, rladies-fonts]
+    chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      countdown: 60000
+---
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+library(dplyr)
+library(knitr)
+
+options(htmltools.dir.version = FALSE)
+```
+
+
+# Hopefully we have enough time to talk about...
+
+## Development Strategy
+- Reproducible Analytics
+- Data Science
+- Education & skillset development 
+
+## Data Products
+- TAVR: device comparison
+- GWTG-CAD: import data file
+
+---
+
+# Development Strategy
+
+## Reproducible Analytics/Research
+
+- Analytics/Research is "reproducible" when you and others can get the exact same results using the same data. 
+- "High Reliability Analytics"
+
+Article - [Spreadsheets are slowing our progress](https://towardsdatascience.com/spreadsheets-are-slowing-our-progress-caa1f7709302) - Keith McNulty - March 7, 2019 
+
+
+## Tools
+
+- R/RStudio - Integrated Development Environment
+- SQL (Toad Data Point)
+- Git (version control)
+- Jira (project management) 
+- "Inner Source": adopting "open source" practices and tools within an organization
+
+---
+
+# Development Strategy
+
+## Clinical Data Science 
+
+> discipline that allows you to turn raw data into 
+> understanding, insight, and knowledge (Grolemund & Wickham, 2017) 
+
+.pull-left[
+#### Type A - Analytics
+- making sense of data
+- data cleaning, visualization, statistics
+- non-programming background 
+- analysts and scientists
+
+]
+
+.pull-right[
+#### Type B - Build
+- models for use "in production"
+- programming background 
+- computer science & software engineers
+
+]
+
+
+---
+# Development Strategy
+
+## Education and Skillset development
+
+__Coursera__
+  - Data Science Specialization (Johns Hopkins - Bloomberg School of Public Health)
+  - Clinical Data Science (Univ of Colorado - Anschutz School of Medicine)  
+  
+__DataCamp__  https://datacamp.com
+
+
+__R for Data Science__  https://r4ds.had.co.nz/
+
+__Programming Skills for Data Science__
+
+Textbook used in Clinical Informatics program at University of Washington 
+
+https://www.amazon.com/dp/B07KMDCHT2/ref=rdr_kindle_ext_tmb
+
+
+---
+# Data Products
+
+## TAVR: Are there a significant differences between the two devices?
+
+.pull-left[
+#### Initial request 
+
+ - comparison table of basic demographics
+ - 1 year AVMG and % over 20mm
+ - list of cases > 20mm  
+   
+__Product:__ _[TAVR AVMG at 1 year](./TAVR_1yr_follow_up_mean_gradients 2019-05-24.pdf)_  
+__Code repository:__ _[TAVR gradients](https://bitbucket.org/p348411/tavr_23x26/src/master/TAVR_gradients/TAVR_gradients.Rmd)_
+
+]
+
+.pull-right[
+#### Next request 
+
+ - All available data elements from TVT Registry (300+ fields)
+ - Construct a 'Table 1' 
+ - All follow-up periods (immediately postop, initial follow-up, & 1 year)  
+   
+__Product:__ _[TAVR: mean gradients](http://ava.providence.org/~p348411/TAVR/TAVR_gradients.html)_  
+__Code repository:__ _[TAVR gradients](https://bitbucket.org/p348411/tavr_23x26/src/master/Reports/TAVR_gradients/TAVR_gradients.Rmd)_
+
+]
+
+---
+# Data Products
+
+## GWTG-CAD: import data file (ETL)
+
+.pull-left[
+### Background
+- Clinical registry by American Heart Association
+- Web-based data entry forms with ability to upload data
+- Existing queries/code for an similar process for GWTG-Stroke
+- Local REDCap project for STEMI cases (timestamps)
+]
+
+.pull-right[
+### Process
+- Scheduled monthly
+- R script pulls from EDW for elligible cases
+- Joined with data from REDCap
+- Creates properly formatted .csv file
+- Sends email with attachment and instructions monthly 
+- Manually uploaded to website
+]
+
+__Code repository:__ _[update_cad_extract](https://bitbucket.org/p348411/gwtg/src/CAD/CAD/R/update_cad_extract.R)_
+
+---
+background-image: url("pmp_labyrinth.png")
+background-size: cover
+class: center, bottom, inverse
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
