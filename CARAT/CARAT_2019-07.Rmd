@@ -28,7 +28,8 @@ options(htmltools.dir.version = FALSE)
 
 ## Development Strategy
 - Reproducible Analytics
-- Data Science
+- Clinical Data Science
+- Analytics Toolbox 
 - Education & skillset development 
 
 ## Data Products
