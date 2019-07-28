@@ -48,7 +48,7 @@ options(htmltools.dir.version = FALSE)
 Article - [Spreadsheets are slowing our progress](https://towardsdatascience.com/spreadsheets-are-slowing-our-progress-caa1f7709302) - Keith McNulty - March 7, 2019 
 
 
-## Tools
+## Analytics Toolbox
 
 - R/RStudio - Integrated Development Environment
 - SQL (Toad Data Point)
